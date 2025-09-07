@@ -23,17 +23,16 @@ namespace CatalogoArticulos
             pictureBox1.Left = (this.ClientSize.Width - pictureBox1.Width) / 2;
             pictureBox1.Top = (this.ClientSize.Height - pictureBox1.Height) / 2;
 
+            timer1.Interval = 3000;
             timer1.Start(); // Inicia el timer al cargar la ventana de presentación
+        
         }
 
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            timer1.Stop();  // Detiene el timer para que no se repita
-            this.Hide();    // Oculta la ventana de presentacion
-
-            Form1 ventanaPrincipal = new Form1();
-            ventanaPrincipal.Show();   // Muestra el Dashboard
+            timer1.Stop();    // Detiene el timer para que no se repita
+            this.Close();     // Cierra la ventana de presentación (SplashScreen)
         }
 
        

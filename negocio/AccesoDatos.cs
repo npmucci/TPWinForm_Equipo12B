@@ -14,7 +14,12 @@ namespace negocio
         private SqlDataReader lector;
 
         //Modificar para el acceso a cada uno
-        private string connectionString = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=master;Integrated Security=True";
+        //mateo
+        //private string connectionString = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=master;Integrated Security=True";
+        //narty
+        private string connectionString = "server=.\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security=true";
+
+
 
         // para leer
         public SqlDataReader Lector
@@ -64,6 +69,11 @@ namespace negocio
                 lector.Close();
             if (conexion != null)
                 conexion.Close();
+        }
+
+        public void SetearParametro(string nombre, object valor) // uso object porque puede recibir cualquier valor
+        {
+            comando.Parameters.AddWithValue(nombre, valor);
         }
     }
 }

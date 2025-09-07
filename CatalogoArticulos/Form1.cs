@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Dominio;
+using negocio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,9 +12,12 @@ using System.Windows.Forms;
 
 namespace CatalogoArticulos
 {
-    public partial class Form1 : Form
+    public partial class CatalogoArticulos : Form
     {
-        public Form1()
+
+        private int indiceImagenActual;
+
+        public CatalogoArticulos()
         {
             InitializeComponent();
         }
@@ -20,6 +25,22 @@ namespace CatalogoArticulos
         private void Form1_Load(object sender, EventArgs e)
         {
 
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            try
+            {
+
+                dgvArticulos.DataSource = negocio.Listar();
+                dgvArticulos.Columns["ID"].Visible = false;
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
         }
+
     }
+    
 }

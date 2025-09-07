@@ -16,7 +16,13 @@ namespace CatalogoArticulos
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SplashScreen());
+
+            using (SplashScreen splash = new SplashScreen())
+            {
+                splash.ShowDialog(); // se abre una ventana modal para mostrar la pantalla de inicio
+            }
+       
+            Application.Run(new CatalogoArticulos());
         }
     }
 }
