@@ -41,6 +41,11 @@ namespace CatalogoArticulos
 
         }
 
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            frmAgregarArticulo agregarArticulo = new frmAgregarArticulo();
+            agregarArticulo.ShowDialog();
+        }
     }
     
 }
