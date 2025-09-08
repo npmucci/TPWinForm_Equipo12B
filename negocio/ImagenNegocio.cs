@@ -20,7 +20,7 @@ namespace negocio
             datos.EjecutarLectura();
             try
             {
-                int contador = 0;
+               
                 while (datos.Lector.Read())
                 {
                     Imagen aux = new Imagen();

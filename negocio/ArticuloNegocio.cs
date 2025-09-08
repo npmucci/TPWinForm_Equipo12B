@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
-using Dominio;
+
 
 namespace negocio
 {
@@ -15,6 +15,7 @@ namespace negocio
         {
             List<Articulo> lista = new List<Articulo>();
             AccesoDatos datos = new AccesoDatos();
+            ImagenNegocio imagen = new ImagenNegocio();
 
             try
             {
@@ -47,7 +48,7 @@ namespace negocio
                         art.Categoria.Descripcion = datos.Lector["Categoria"].ToString();
 
                     }
-                    
+                    art.Imagenes = imagen.ListarImagenes(art.Id);
                     lista.Add(art);
                 }
 
