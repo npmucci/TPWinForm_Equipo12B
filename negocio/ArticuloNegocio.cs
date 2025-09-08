@@ -91,25 +91,25 @@ namespace negocio
 
         public void AgregarImagenes(List<Imagen> urls, int idArticulo)
         {
-            foreach (var url in urls)
+            AccesoDatos datos = new AccesoDatos();
+            try
             {
-                AccesoDatos datos = new AccesoDatos();
-                try
+                foreach (var img in urls)
                 {
                     string query = "INSERT INTO IMAGENES (IdArticulo, ImagenUrl) VALUES (@idArticulo, @url)";
                     datos.SetearConsulta(query);
                     datos.SetearParametro("@idArticulo", idArticulo);
-                    datos.SetearParametro("@url", url);
+                    datos.SetearParametro("@url", img.Url);
                     datos.EjecutarAccion();
                 }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
-                finally
-                {
-                    datos.CerrarConexion();
-                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
             }
         }
     }

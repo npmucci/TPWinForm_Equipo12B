@@ -114,5 +114,33 @@ namespace CatalogoArticulos
             cbxCategoria.DataSource = categoriaNegocio.Listar();
 
         }
+
+        private void btnAgregarMarca_Click(object sender, EventArgs e)
+        {
+            frmAgregarMarca agregarMarca = new frmAgregarMarca();
+            agregarMarca.ShowDialog();
+
+            if (agregarMarca.SeAgrego)
+            {
+                MarcaNegocio marcaNegocio = new MarcaNegocio();
+                cbxMarca.DataSource = marcaNegocio.Listar();
+                cbxMarca.DisplayMember = "Descripcion";
+                cbxMarca.ValueMember = "Id";
+            }
+        }
+
+        private void btnAgregarCategoria_Click(object sender, EventArgs e)
+        {
+            frmAgregarCategoria agregarCategoria = new frmAgregarCategoria();   
+            agregarCategoria.ShowDialog();
+
+            if (agregarCategoria.SeAgrego)
+            {
+                CategoriaNegocio negocio = new CategoriaNegocio();
+                cbxCategoria.DataSource = negocio.Listar();
+                cbxCategoria.DisplayMember = "Descripcion";
+                cbxCategoria.ValueMember = "Id";
+            }
+        }
     }
 }
