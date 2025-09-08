@@ -70,14 +70,55 @@ private void cargarImagen(string url)
 
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
         {
-            
-            Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+
+            /*Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
             
 
-            cargarImagen(seleccionado.Imagenes[0].Url.ToString());
-           
+            cargarImagen(seleccionado.Imagenes[0].Url.ToString());*/
+            if (dgvArticulos.CurrentRow != null)
+            {
+                Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+
+                if (seleccionado.Imagenes != null && seleccionado.Imagenes.Count > 0)
+                {
+                    cargarImagen(seleccionado.Imagenes[0].Url);
+                }
+                else
+                {
+                    // Si no hay imágenes, mostramos una por defecto
+                    cargarImagen("https://via.placeholder.com/300x300?text=Sin+Imagen");
+                }
+            }
+
         }
 
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (dgvArticulos.CurrentRow != null)
+            {
+                Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+
+                DialogResult respuesta = MessageBox.Show(
+                    $"¿Seguro que desea eliminar el artículo '{seleccionado.Nombre}'?",
+                    "Confirmar eliminación",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning
+                );
+
+                if (respuesta == DialogResult.Yes)
+                {
+                    ArticuloNegocio negocio = new ArticuloNegocio();
+                    negocio.Eliminar(seleccionado.Id);
+
+                    // Refrescar grilla
+                    dgvArticulos.DataSource = negocio.Listar();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un artículo primero.");
+            }
+        }
     }
 
 }

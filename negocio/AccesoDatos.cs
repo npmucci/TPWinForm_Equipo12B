@@ -15,7 +15,7 @@ namespace negocio
 
         //Modificar para el acceso a cada uno
         //mateo
-        //private string connectionString = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=master;Integrated Security=True";
+        //private string connectionString = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=CATALOGO_P3;Integrated Security=True";
         //narty
         private string connectionString = "server=.\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security=true";
 
@@ -94,5 +94,6 @@ namespace negocio
                 conexion.Close();
             }
         }
+        
     }
 }
