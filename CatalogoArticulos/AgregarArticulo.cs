@@ -17,13 +17,22 @@ namespace CatalogoArticulos
 {
     public partial class frmAgregarArticulo : Form
     {
-        
+
         public frmAgregarArticulo()
         {
             InitializeComponent();
         }
 
-       
+        public void frmAgregarArticulo_Load(object sender, EventArgs e)
+        {
+            MarcaNegocio marcaNegocio = new MarcaNegocio();
+            cbxMarca.DataSource = marcaNegocio.Listar();
+            CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
+            cbxCategoria.DataSource = categoriaNegocio.Listar();
+            ptbImagen.Load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxdAOY_-vITFVI-ej84s2U_ErxhOly-z3y_Q&s");
+
+
+        }
 
         private List<Imagen> imagenes = new List<Imagen>();
 
@@ -32,10 +41,10 @@ namespace CatalogoArticulos
             string url = txbURLImagen.Text.Trim();
             if (!string.IsNullOrEmpty(url))
             {
-              
+
                 Imagen nuevaImagen = new Imagen { Url = url };
                 imagenes.Add(nuevaImagen);
-                lbxListaImagenes.Items.Add(nuevaImagen);              
+                lbxListaImagenes.Items.Add(nuevaImagen);
                 txbURLImagen.Clear();
             }
         }
@@ -44,9 +53,9 @@ namespace CatalogoArticulos
         {
             if (lbxListaImagenes.SelectedItem != null)
             {
-                
-                Imagen imagenSeleccionada = (Imagen)lbxListaImagenes.SelectedItem;           
-                imagenes.Remove(imagenSeleccionada);              
+
+                Imagen imagenSeleccionada = (Imagen)lbxListaImagenes.SelectedItem;
+                imagenes.Remove(imagenSeleccionada);
                 lbxListaImagenes.Items.Remove(imagenSeleccionada);
             }
         }
@@ -67,10 +76,59 @@ namespace CatalogoArticulos
             }
         }
 
-       
+        private bool SoloNumeros(string texto)
+        {
+            foreach (char c in texto)
+            {
+                if (!char.IsDigit(c) && c != '.')
+                    return false;
+            }
+            return true;
+        }
+
+        private bool ValidarCampos()
+        {
+            if (string.IsNullOrWhiteSpace(txbCodigo.Text) || !SoloNumeros(txbCodigo.Text))
+            {
+                MessageBox.Show("El campo 'Código' debe ser un número válido.");
+                return false;
+            }
+            else if (string.IsNullOrWhiteSpace(txbNombre.Text))
+            {
+                MessageBox.Show("El campo 'Nombre' no puede estar vacío.");
+                return false;
+            }
+            else if (string.IsNullOrWhiteSpace(txbDescrip.Text))
+            {
+                MessageBox.Show("El campo 'Descripción' no puede estar vacío.");
+                return false;
+            }
+            else if (string.IsNullOrWhiteSpace(txbPrecio.Text) || !SoloNumeros(txbPrecio.Text))
+            {
+                MessageBox.Show("El campo 'Precio' debe ser un número válido.");
+                return false;
+            }
+            else if (cbxMarca.SelectedItem == null)
+            {
+                MessageBox.Show("Debe seleccionar una Marca.");
+                return false;
+            }
+            else if (cbxCategoria.SelectedItem == null)
+            {
+                MessageBox.Show("Debe seleccionar una Categoría.");
+                return false;
+            }
+
+            return true;
+        }
+
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            while (!ValidarCampos())
+                return;
+
+
             Articulo nuevo = new Articulo();
             nuevo.Codigo = txbCodigo.Text;
             nuevo.Nombre = txbNombre.Text;
@@ -79,6 +137,8 @@ namespace CatalogoArticulos
             nuevo.Marca = (Marca)cbxMarca.SelectedItem;
             nuevo.Categoria = (Categoria)cbxCategoria.SelectedItem;
             nuevo.Imagenes = new List<Imagen>(imagenes);
+
+
 
             ArticuloNegocio negocio = new ArticuloNegocio();
 
@@ -97,23 +157,10 @@ namespace CatalogoArticulos
             {
                 MessageBox.Show("Error al guardar: " + ex.Message);
             }
-        
+
 
         }
 
-        private void cbxMarca_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        public void frmAgregarArticulo_Load(object sender, EventArgs e)
-        {
-            MarcaNegocio marcaNegocio = new MarcaNegocio();
-            cbxMarca.DataSource = marcaNegocio.Listar();
-            CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
-            cbxCategoria.DataSource = categoriaNegocio.Listar();
-
-        }
 
         private void btnAgregarMarca_Click(object sender, EventArgs e)
         {
@@ -131,7 +178,7 @@ namespace CatalogoArticulos
 
         private void btnAgregarCategoria_Click(object sender, EventArgs e)
         {
-            frmAgregarCategoria agregarCategoria = new frmAgregarCategoria();   
+            frmAgregarCategoria agregarCategoria = new frmAgregarCategoria();
             agregarCategoria.ShowDialog();
 
             if (agregarCategoria.SeAgrego)
@@ -141,6 +188,11 @@ namespace CatalogoArticulos
                 cbxCategoria.DisplayMember = "Descripcion";
                 cbxCategoria.ValueMember = "Id";
             }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
