@@ -27,7 +27,43 @@ namespace CatalogoArticulos
         {
 
             cargarDatos();
+            cargarCategorias();
+            cargarMarcas();
 
+        }
+        private void cargarCategorias()
+        {
+            CategoriaNegocio negocio = new CategoriaNegocio();
+            var listaCategorias = negocio.Listar();
+
+            // Crear un elemento vacío para "sin filtro"
+            listaCategorias.Insert(0, new Categoria { Id = 0, Descripcion = "--Todos--" });
+
+            cbBoxCategoria.SelectedIndexChanged -= cbBoxCategoria_SelectedIndexChanged;
+
+            cbBoxCategoria.DataSource = listaCategorias;
+            cbBoxCategoria.DisplayMember = "Descripcion";
+            cbBoxCategoria.ValueMember = "Id";
+            cbBoxCategoria.SelectedIndex = 0; // seleccionamos el primer elemento "--Todos--"
+
+            cbBoxCategoria.SelectedIndexChanged += cbBoxCategoria_SelectedIndexChanged;
+        }
+
+        private void cargarMarcas()
+        {
+            MarcaNegocio negocio = new MarcaNegocio();
+            var listaMarcas = negocio.Listar();
+
+            listaMarcas.Insert(0, new Marca { Id = 0, Descripcion = "--Todas--" });
+
+            cbBoxMarca.SelectedIndexChanged -= cbBoxMarca_SelectedIndexChanged;
+
+            cbBoxMarca.DataSource = listaMarcas;
+            cbBoxMarca.DisplayMember = "Descripcion";
+            cbBoxMarca.ValueMember = "Id";
+            cbBoxMarca.SelectedIndex = 0;
+
+            cbBoxMarca.SelectedIndexChanged += cbBoxMarca_SelectedIndexChanged;
         }
 
         private void cargarDatos()
@@ -60,7 +96,44 @@ namespace CatalogoArticulos
                 pbxArticulo.Load("https://efectocolibri.com/wp-content/uploads/2021/01/placeholder.png");
             }
         }
+        private void AplicarFiltros()
+        {
+            try
+            {
+                ArticuloNegocio negocio = new ArticuloNegocio();
+                var lista = negocio.Listar(); 
 
+                
+                if (!string.IsNullOrWhiteSpace(txtBusquedaNombre.Text))
+                {
+                    lista = lista.Where(a => a.Nombre.IndexOf(txtBusquedaNombre.Text, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
+                }
+
+                
+                int idCategoria = Convert.ToInt32(cbBoxCategoria.SelectedValue);
+                if (idCategoria != 0) 
+                {
+                    lista = lista.Where(a => a.Categoria.Id == idCategoria).ToList();
+                }
+
+                
+                int idMarca = Convert.ToInt32(cbBoxMarca.SelectedValue);
+                if (idMarca != 0) 
+                {
+                    lista = lista.Where(a => a.Marca.Id == idMarca).ToList();
+                }
+
+                dgvArticulos.DataSource = lista;
+
+                
+                if (dgvArticulos.Columns["ID"] != null)
+                    dgvArticulos.Columns["ID"].Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al aplicar filtros: " + ex.Message);
+            }
+        }
 
 
 
@@ -171,6 +244,22 @@ namespace CatalogoArticulos
             }
         }
 
-      
+        private void txtBusquedaNombre_TextChanged(object sender, EventArgs e)
+        {
+         
+            AplicarFiltros();
+        }
+
+        private void cbBoxCategoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            AplicarFiltros();
+        }
+
+        private void cbBoxMarca_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            AplicarFiltros();
+        }
     }
 }

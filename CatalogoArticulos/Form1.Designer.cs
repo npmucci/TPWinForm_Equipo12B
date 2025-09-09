@@ -31,11 +31,11 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CatalogoArticulos));
             this.lblFiltroNombre = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtBusquedaNombre = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lblFiltroMarca = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cbBoxMarca = new System.Windows.Forms.ComboBox();
+            this.cbBoxCategoria = new System.Windows.Forms.ComboBox();
             this.pnlBotones = new System.Windows.Forms.Panel();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
@@ -66,12 +66,13 @@
             this.lblFiltroNombre.TabIndex = 2;
             this.lblFiltroNombre.Text = "Nombre";
             // 
-            // textBox1
+            // txtBusquedaNombre
             // 
-            this.textBox1.Location = new System.Drawing.Point(80, 38);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(212, 20);
-            this.textBox1.TabIndex = 3;
+            this.txtBusquedaNombre.Location = new System.Drawing.Point(80, 38);
+            this.txtBusquedaNombre.Name = "txtBusquedaNombre";
+            this.txtBusquedaNombre.Size = new System.Drawing.Size(212, 20);
+            this.txtBusquedaNombre.TabIndex = 3;
+            this.txtBusquedaNombre.TextChanged += new System.EventHandler(this.txtBusquedaNombre_TextChanged);
             // 
             // label1
             // 
@@ -93,21 +94,21 @@
             this.lblFiltroMarca.TabIndex = 5;
             this.lblFiltroMarca.Text = "Marca";
             // 
-            // comboBox1
+            // cbBoxMarca
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(627, 38);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(147, 21);
-            this.comboBox1.TabIndex = 6;
+            this.cbBoxMarca.FormattingEnabled = true;
+            this.cbBoxMarca.Location = new System.Drawing.Point(627, 38);
+            this.cbBoxMarca.Name = "cbBoxMarca";
+            this.cbBoxMarca.Size = new System.Drawing.Size(147, 21);
+            this.cbBoxMarca.TabIndex = 6;
             // 
-            // comboBox2
+            // cbBoxCategoria
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(387, 37);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(147, 21);
-            this.comboBox2.TabIndex = 7;
+            this.cbBoxCategoria.FormattingEnabled = true;
+            this.cbBoxCategoria.Location = new System.Drawing.Point(387, 37);
+            this.cbBoxCategoria.Name = "cbBoxCategoria";
+            this.cbBoxCategoria.Size = new System.Drawing.Size(147, 21);
+            this.cbBoxCategoria.TabIndex = 7;
             // 
             // pnlBotones
             // 
@@ -176,11 +177,11 @@
             // gxbFiltrado
             // 
             this.gxbFiltrado.BackColor = System.Drawing.Color.MidnightBlue;
-            this.gxbFiltrado.Controls.Add(this.comboBox1);
+            this.gxbFiltrado.Controls.Add(this.cbBoxMarca);
             this.gxbFiltrado.Controls.Add(this.lblFiltroNombre);
             this.gxbFiltrado.Controls.Add(this.lblFiltroMarca);
-            this.gxbFiltrado.Controls.Add(this.textBox1);
-            this.gxbFiltrado.Controls.Add(this.comboBox2);
+            this.gxbFiltrado.Controls.Add(this.txtBusquedaNombre);
+            this.gxbFiltrado.Controls.Add(this.cbBoxCategoria);
             this.gxbFiltrado.Controls.Add(this.label1);
             this.gxbFiltrado.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.gxbFiltrado.Location = new System.Drawing.Point(78, 0);
@@ -299,11 +300,11 @@
 
         private System.Windows.Forms.PictureBox pxbLogo;
         private System.Windows.Forms.Label lblFiltroNombre;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtBusquedaNombre;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblFiltroMarca;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cbBoxMarca;
+        private System.Windows.Forms.ComboBox cbBoxCategoria;
         private System.Windows.Forms.Panel pnlBotones;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnEditar;
