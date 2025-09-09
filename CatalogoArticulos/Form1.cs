@@ -15,7 +15,8 @@ namespace CatalogoArticulos
     public partial class CatalogoArticulos : Form
     {
 
-        private int indiceImagenActual;
+        private int indiceImagenActual = 0;
+        private List<Imagen> imagenesArticuloActual = new List<Imagen>();
 
         public CatalogoArticulos()
         {
@@ -71,21 +72,23 @@ private void cargarImagen(string url)
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
         {
 
-            /*Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-            
-
-            cargarImagen(seleccionado.Imagenes[0].Url.ToString());*/
-            if (dgvArticulos.CurrentRow != null)
+            if (dgvArticulos.CurrentRow != null) // Verifica que haya una fila seleccionada
             {
-                Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem; // Guardamos el articulo seleccionado
 
-                if (seleccionado.Imagenes != null && seleccionado.Imagenes.Count > 0)
+                if (seleccionado.Imagenes != null && seleccionado.Imagenes.Count > 0)   // El articulo tiene imagenes?
                 {
-                    cargarImagen(seleccionado.Imagenes[0].Url);
+                    imagenesArticuloActual = seleccionado.Imagenes;   // Guardamos la lista completa de imagenes del articulo
+
+                    indiceImagenActual = 0;   // Reseteamos al primer índice
+
+                    cargarImagen(imagenesArticuloActual[indiceImagenActual].Url);  // Cargamos la primer imagen
                 }
                 else
                 {
-                    // Si no hay imágenes, mostramos una por defecto
+
+                    imagenesArticuloActual.Clear(); // Si no tiene imagenes, limpiamos la lista y mostramos una imagen por defecto
+                    indiceImagenActual = 0;
                     cargarImagen("https://via.placeholder.com/300x300?text=Sin+Imagen");
                 }
             }
@@ -118,6 +121,30 @@ private void cargarImagen(string url)
             {
                 MessageBox.Show("Seleccione un artículo primero.");
             }
+        }
+
+        private void btnIzquierda_Click(object sender, EventArgs e)
+        {
+            if (imagenesArticuloActual.Count == 0) return; // Verifica si hay imagenes cargadas, si no hay, retorna (no hace nada)
+
+            indiceImagenActual--;  // Baja el indice para ir a la imagen anterior
+
+            if (indiceImagenActual < 0)
+                indiceImagenActual = imagenesArticuloActual.Count - 1; // Si el indice es menor a 0 (es la primera imagen) vuelve al final, o sea hace efecto circular
+
+            cargarImagen(imagenesArticuloActual[indiceImagenActual].Url); // Carga la imagen en el PictureBox con el indice actualizado
+        }
+
+        private void btnDerecha_Click(object sender, EventArgs e)
+        {
+            if (imagenesArticuloActual.Count == 0) return;
+
+            indiceImagenActual++;
+
+            if (indiceImagenActual >= imagenesArticuloActual.Count)
+                indiceImagenActual = 0; // vuelve al inicio
+
+            cargarImagen(imagenesArticuloActual[indiceImagenActual].Url);   
         }
     }
 
