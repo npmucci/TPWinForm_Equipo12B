@@ -35,6 +35,7 @@ namespace CatalogoArticulos
         }
 
         private List<Imagen> imagenes = new List<Imagen>();
+        public bool ArticuloAgregado { get; private set; } = false;
 
         private void btnAgregarURL_Click(object sender, EventArgs e)
         {
@@ -144,13 +145,15 @@ namespace CatalogoArticulos
 
             try
             {
-                // 1. Guardar artículo
-                int idGenerado = negocio.AgregarArticulo(nuevo);
+                
+                int idGenerado = negocio.AgregarArticulo(nuevo); //  guardar articulo y obtener id
 
-                // 2. Guardar imágenes con ese id
-                negocio.AgregarImagenes(nuevo.Imagenes, idGenerado);
 
-                MessageBox.Show("Artículo guardado con éxito junto a sus imágenes.");
+                negocio.AgregarImagenes(nuevo.Imagenes, idGenerado); // guardar imagenes con ese id
+
+                MessageBox.Show("Artículo guardado con éxito.");
+                ArticuloAgregado = true;    
+
                 this.Close();
             }
             catch (Exception ex)

@@ -67,6 +67,10 @@ private void cargarImagen(string url)
         {
             frmAgregarArticulo agregarArticulo = new frmAgregarArticulo();
             agregarArticulo.ShowDialog();
+            if (agregarArticulo.ArticuloAgregado)
+            {
+                cargarDatos();
+            }
         }
 
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)

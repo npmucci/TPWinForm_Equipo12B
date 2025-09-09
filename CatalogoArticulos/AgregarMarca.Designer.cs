@@ -80,6 +80,7 @@
             this.Controls.Add(this.lblNuevaMarca);
             this.Controls.Add(this.tbxNuevaMarca);
             this.Name = "frmAgregarMarca";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agregar Marca";
             this.ResumeLayout(false);
             this.PerformLayout();
