@@ -65,9 +65,9 @@ namespace negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                string query = "DELETE FROM IMAGENES WHERE Id = @idImagen";
+                string query = "DELETE FROM IMAGENES WHERE IdArticulo = @idArticulo"; 
                 datos.SetearConsulta(query);
-                datos.SetearParametro("@idImagen", idArticulo);
+                datos.SetearParametro("@idArticulo", idArticulo); 
                 datos.EjecutarAccion();
             }
             catch (Exception ex)
@@ -79,6 +79,7 @@ namespace negocio
                 datos.CerrarConexion();
             }
         }
+
         public void ModificarImagenes(List<Imagen> urls, int idArticulo)
         {
             AccesoDatos datos = new AccesoDatos();

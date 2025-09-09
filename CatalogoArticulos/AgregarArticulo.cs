@@ -29,6 +29,7 @@ namespace CatalogoArticulos
             InitializeComponent();
             this.articulo = articulo;
             Text = "Modificar Artículo";
+            lbltitulo.Text = "Modificar Artículo";
             btnAceptar.Text = "Modificar";
 
         }
