@@ -61,7 +61,7 @@
             this.lblFiltroNombre.Font = new System.Drawing.Font("Segoe UI Semibold", 9.163636F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFiltroNombre.Location = new System.Drawing.Point(16, 25);
             this.lblFiltroNombre.Name = "lblFiltroNombre";
-            this.lblFiltroNombre.Size = new System.Drawing.Size(58, 17);
+            this.lblFiltroNombre.Size = new System.Drawing.Size(60, 19);
             this.lblFiltroNombre.TabIndex = 2;
             this.lblFiltroNombre.Text = "Nombre";
             // 
@@ -78,7 +78,7 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.163636F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(298, 24);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 17);
+            this.label1.Size = new System.Drawing.Size(69, 19);
             this.label1.TabIndex = 4;
             this.label1.Text = "Categoria";
             // 
@@ -88,7 +88,7 @@
             this.lblFiltroMarca.Font = new System.Drawing.Font("Segoe UI Semibold", 9.163636F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFiltroMarca.Location = new System.Drawing.Point(533, 25);
             this.lblFiltroMarca.Name = "lblFiltroMarca";
-            this.lblFiltroMarca.Size = new System.Drawing.Size(45, 17);
+            this.lblFiltroMarca.Size = new System.Drawing.Size(48, 19);
             this.lblFiltroMarca.TabIndex = 5;
             this.lblFiltroMarca.Text = "Marca";
             // 
@@ -131,6 +131,7 @@
             this.btnEditar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnEliminar
             // 
@@ -167,7 +168,7 @@
             this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 20.29091F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.Location = new System.Drawing.Point(276, 78);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(335, 38);
+            this.lblTitulo.Size = new System.Drawing.Size(388, 45);
             this.lblTitulo.TabIndex = 12;
             this.lblTitulo.Text = "CATALOGO PRODUCTOS";
             // 
@@ -194,6 +195,7 @@
             this.dgvArticulos.Location = new System.Drawing.Point(0, 119);
             this.dgvArticulos.MultiSelect = false;
             this.dgvArticulos.Name = "dgvArticulos";
+            this.dgvArticulos.RowHeadersWidth = 47;
             this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvArticulos.Size = new System.Drawing.Size(644, 262);
             this.dgvArticulos.TabIndex = 14;

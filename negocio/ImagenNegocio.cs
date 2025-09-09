@@ -36,5 +36,74 @@ namespace negocio
                 throw ex;
             }
         }
+        public void AgregarImagenes(List<Imagen> urls, int idArticulo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                foreach (var img in urls)
+                {
+                    string query = "INSERT INTO IMAGENES (IdArticulo, ImagenUrl) VALUES (@idArticulo, @url)";
+                    datos.SetearConsulta(query);
+                    datos.SetearParametro("@idArticulo", idArticulo);
+                    datos.SetearParametro("@url", img.Url);
+                    datos.EjecutarAccion();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
+        //elimino todas las imagenes de un articulo para despues agregar las nuevas
+        public void EliminarImagen(int idArticulo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                string query = "DELETE FROM IMAGENES WHERE Id = @idImagen";
+                datos.SetearConsulta(query);
+                datos.SetearParametro("@idImagen", idArticulo);
+                datos.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
+        public void ModificarImagenes(List<Imagen> urls, int idArticulo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                // Eliminar las imágenes existentes para el artículo asi no se duplican
+                EliminarImagen(idArticulo);
+                // Insertar las nuevas imágenes
+                foreach (var img in urls)
+                {
+                    string insertQuery = "INSERT INTO IMAGENES (IdArticulo, ImagenUrl) VALUES (@idArticulo, @url)";
+                    datos.SetearConsulta(insertQuery);
+                    datos.SetearParametro("@idArticulo", idArticulo);
+                    datos.SetearParametro("@url", img.Url);
+                    datos.EjecutarAccion();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
     }
 }

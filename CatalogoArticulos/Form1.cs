@@ -30,7 +30,8 @@ namespace CatalogoArticulos
 
         }
 
-        private void cargarDatos() {
+        private void cargarDatos()
+        {
             ArticuloNegocio negocio = new ArticuloNegocio();
             try
             {
@@ -46,13 +47,13 @@ namespace CatalogoArticulos
             }
         }
 
-      
-private void cargarImagen(string url)
+
+        private void cargarImagen(string url)
         {
-         
+
             try
             {
-                pbxArticulo.LoadAsync(url); // Carga en segundo plano
+                pbxArticulo.Load(url);
             }
             catch
             {
@@ -60,8 +61,8 @@ private void cargarImagen(string url)
             }
         }
 
-         
-        
+
+
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -93,7 +94,7 @@ private void cargarImagen(string url)
 
                     imagenesArticuloActual.Clear(); // Si no tiene imagenes, limpiamos la lista y mostramos una imagen por defecto
                     indiceImagenActual = 0;
-                    cargarImagen("https://via.placeholder.com/300x300?text=Sin+Imagen");
+                    cargarImagen("https://efectocolibri.com/wp-content/uploads/2021/01/placeholder.png");
                 }
             }
 
@@ -118,7 +119,7 @@ private void cargarImagen(string url)
                     negocio.Eliminar(seleccionado.Id);
 
                     // Refrescar grilla
-                    dgvArticulos.DataSource = negocio.Listar();
+                    cargarDatos();
                 }
             }
             else
@@ -148,8 +149,26 @@ private void cargarImagen(string url)
             if (indiceImagenActual >= imagenesArticuloActual.Count)
                 indiceImagenActual = 0; // vuelve al inicio
 
-            cargarImagen(imagenesArticuloActual[indiceImagenActual].Url);   
+            cargarImagen(imagenesArticuloActual[indiceImagenActual].Url);
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            if (dgvArticulos.CurrentRow != null)
+            {
+                Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                frmAgregarArticulo modificarArticulo = new frmAgregarArticulo(seleccionado);
+                modificarArticulo.ShowDialog();
+                if (modificarArticulo.ArticuloAgregado)
+                {
+                    cargarDatos();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un artículo primero.");
+
+            }
         }
     }
-
 }

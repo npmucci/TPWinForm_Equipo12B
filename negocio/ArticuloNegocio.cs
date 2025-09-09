@@ -90,29 +90,7 @@ namespace negocio
             }
         }
 
-        public void AgregarImagenes(List<Imagen> urls, int idArticulo)
-        {
-            AccesoDatos datos = new AccesoDatos();
-            try
-            {
-                foreach (var img in urls)
-                {
-                    string query = "INSERT INTO IMAGENES (IdArticulo, ImagenUrl) VALUES (@idArticulo, @url)";
-                    datos.SetearConsulta(query);
-                    datos.SetearParametro("@idArticulo", idArticulo);
-                    datos.SetearParametro("@url", img.Url);
-                    datos.EjecutarAccion();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                datos.CerrarConexion();
-            }
-        }
+
         public void Eliminar(int id)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -131,7 +109,33 @@ namespace negocio
                 datos.CerrarConexion();
             }
         }
-        
+
+        public void Modificar(Articulo articulo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                string query = "UPDATE ARTICULOS SET Codigo = @codigo,Nombre = @nombre,Descripcion = @descripcion,IdMarca = @idMarca,IdCategoria = @idCategoria,Precio = @precio WHERE Id = @id";
+                datos.SetearConsulta(query);
+                datos.SetearParametro("@codigo", articulo.Codigo);
+                datos.SetearParametro("@nombre", articulo.Nombre);
+                datos.SetearParametro("@descripcion", articulo.Descripcion);
+                datos.SetearParametro("@idMarca", articulo.Marca.Id);
+                datos.SetearParametro("@idCategoria", articulo.Categoria.Id);
+                datos.SetearParametro("@precio", articulo.Precio);
+                datos.SetearParametro("@id", articulo.Id);
+                datos.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
+
     }
 
 }

@@ -17,19 +17,56 @@ namespace CatalogoArticulos
 {
     public partial class frmAgregarArticulo : Form
     {
+        private Articulo articulo = null;
 
         public frmAgregarArticulo()
         {
             InitializeComponent();
         }
+        //sobrecarga del constructor para modificar
+        public frmAgregarArticulo(Articulo articulo)
+        {
+            InitializeComponent();
+            this.articulo = articulo;
+            Text = "Modificar Artículo";
+            btnAceptar.Text = "Modificar";
+
+        }
 
         public void frmAgregarArticulo_Load(object sender, EventArgs e)
         {
-            MarcaNegocio marcaNegocio = new MarcaNegocio();
-            cbxMarca.DataSource = marcaNegocio.Listar();
-            CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
-            cbxCategoria.DataSource = categoriaNegocio.Listar();
-            ptbImagen.Load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxdAOY_-vITFVI-ej84s2U_ErxhOly-z3y_Q&s");
+            try
+            {
+                MarcaNegocio marcaNegocio = new MarcaNegocio();
+                cbxMarca.DataSource = marcaNegocio.Listar();
+                cbxMarca.DisplayMember = "Descripcion";
+                cbxMarca.ValueMember = "Id";
+                CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
+                cbxCategoria.DataSource = categoriaNegocio.Listar();
+                cbxCategoria.DisplayMember = "Descripcion";
+                cbxCategoria.ValueMember = "Id";
+                ptbImagen.Load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxdAOY_-vITFVI-ej84s2U_ErxhOly-z3y_Q&s");
+               
+                if(articulo != null)
+                {
+                    txbCodigo.Text = articulo.Codigo;
+                    txbNombre.Text = articulo.Nombre;
+                    txbDescrip.Text = articulo.Descripcion;
+                    txbPrecio.Text = articulo.Precio.ToString();
+                    cbxMarca.SelectedValue = articulo.Marca.Id;
+                    cbxCategoria.SelectedValue = articulo.Categoria.Id;
+                    imagenes = new List<Imagen>(articulo.Imagenes);
+                    foreach (var img in imagenes)
+                    {
+                        lbxListaImagenes.Items.Add(img);
+                    }
+                }
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
 
 
         }
@@ -81,7 +118,7 @@ namespace CatalogoArticulos
         {
             foreach (char c in texto)
             {
-                if (!char.IsDigit(c) && c != '.')
+                if (!char.IsDigit(c) && c != '.' && c != ',')
                     return false;
             }
             return true;
@@ -89,7 +126,7 @@ namespace CatalogoArticulos
 
         private bool ValidarCampos()
         {
-            if (string.IsNullOrWhiteSpace(txbCodigo.Text) || !SoloNumeros(txbCodigo.Text))
+            if (string.IsNullOrWhiteSpace(txbCodigo.Text) || !esCodigoValido(txbCodigo.Text))
             {
                 MessageBox.Show("El campo 'Código' debe ser un número válido.");
                 return false;
@@ -122,47 +159,61 @@ namespace CatalogoArticulos
 
             return true;
         }
-
+        private bool esCodigoValido(string codigo)
+        {
+            foreach (char c in codigo)
+            {
+                if (!char.IsLetterOrDigit(c))
+                    return false;
+            }
+            return true;
+        }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            while (!ValidarCampos())
+            if (!ValidarCampos())
                 return;
 
-
-            Articulo nuevo = new Articulo();
-            nuevo.Codigo = txbCodigo.Text;
-            nuevo.Nombre = txbNombre.Text;
-            nuevo.Descripcion = txbDescrip.Text;
-            nuevo.Precio = decimal.Parse(txbPrecio.Text);
-            nuevo.Marca = (Marca)cbxMarca.SelectedItem;
-            nuevo.Categoria = (Categoria)cbxCategoria.SelectedItem;
-            nuevo.Imagenes = new List<Imagen>(imagenes);
-
-
-
             ArticuloNegocio negocio = new ArticuloNegocio();
+            ImagenNegocio imagenNegocio = new ImagenNegocio();
 
             try
             {
+                // Si articulo es null, significa que estamos creando uno nuevo
+                if (articulo == null)
+                    articulo = new Articulo();
+
                 
-                int idGenerado = negocio.AgregarArticulo(nuevo); //  guardar articulo y obtener id
+                articulo.Codigo = txbCodigo.Text;
+                articulo.Nombre = txbNombre.Text;
+                articulo.Descripcion = txbDescrip.Text;
+                articulo.Precio = decimal.Parse(txbPrecio.Text);
+                articulo.Marca = (Marca)cbxMarca.SelectedItem;
+                articulo.Categoria = (Categoria)cbxCategoria.SelectedItem;
+                articulo.Imagenes = new List<Imagen>(imagenes);
 
+                if (articulo.Id != 0) // Si tiene un ID válido, es modificación
+                {
+                    negocio.Modificar(articulo); 
+                    imagenNegocio.ModificarImagenes(articulo.Imagenes, articulo.Id);
+                    MessageBox.Show("Artículo modificado con éxito.");
+                }
+                else // Alta de nuevo artículo
+                {
+                    int idGenerado = negocio.AgregarArticulo(articulo);
+                    imagenNegocio.AgregarImagenes(articulo.Imagenes, idGenerado);
+                    MessageBox.Show("Artículo agregado con éxito.");
+                }
 
-                negocio.AgregarImagenes(nuevo.Imagenes, idGenerado); // guardar imagenes con ese id
-
-                MessageBox.Show("Artículo guardado con éxito.");
-                ArticuloAgregado = true;    
-
+                ArticuloAgregado = true;
                 this.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al guardar: " + ex.Message);
             }
-
-
         }
+
 
 
         private void btnAgregarMarca_Click(object sender, EventArgs e)
@@ -196,5 +247,7 @@ namespace CatalogoArticulos
         {
             this.Close();
         }
+
+
     }
 }
