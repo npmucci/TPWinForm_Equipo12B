@@ -17,6 +17,7 @@ namespace CatalogoArticulos
 
         private int indiceImagenActual = 0;
         private List<Imagen> imagenesArticuloActual = new List<Imagen>();
+        private Timer timerBusquedaTexto;
 
         public CatalogoArticulos()
         {
@@ -30,7 +31,13 @@ namespace CatalogoArticulos
             cargarCategorias();
             cargarMarcas();
 
+            timerBusquedaTexto = new Timer();
+            timerBusquedaTexto.Interval = 1000;
+            timerBusquedaTexto.Tick += TimerBusquedaTexto_Tick; // Asociamos el envento Tick del timer a la funcion TimerBusquedaTexto_Tick
+                                                                // Cada vez que se dispare el evento Tick, se ejecutara la funcion
+
         }
+
         private void cargarCategorias()
         {
             CategoriaNegocio negocio = new CategoriaNegocio();
@@ -244,10 +251,20 @@ namespace CatalogoArticulos
             }
         }
 
+        private void TimerBusquedaTexto_Tick(object sender, EventArgs e)
+        {
+            // Cada vez que pasa el tiempo estipulado en el timer, se ejecuta esta funcion
+            // y el timer se detiene para no seguir ejecutandose y se aplican los filtros
+            timerBusquedaTexto.Stop(); 
+            AplicarFiltros();     
+        }
+
         private void txtBusquedaNombre_TextChanged(object sender, EventArgs e)
         {
-         
-            AplicarFiltros();
+            // Cada letra que se escribe una letra, se dispara TextChanged.
+            // Luego reiniciamos el timer para que espere 1 segundo desde la ultima letra escrita (puede ser otro intervalo)
+            timerBusquedaTexto.Stop();
+            timerBusquedaTexto.Start();
         }
 
         private void cbBoxCategoria_SelectedIndexChanged(object sender, EventArgs e)

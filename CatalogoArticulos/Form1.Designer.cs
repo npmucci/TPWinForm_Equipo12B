@@ -60,7 +60,7 @@
             // 
             this.lblFiltroNombre.AutoSize = true;
             this.lblFiltroNombre.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFiltroNombre.Location = new System.Drawing.Point(16, 38);
+            this.lblFiltroNombre.Location = new System.Drawing.Point(7, 38);
             this.lblFiltroNombre.Name = "lblFiltroNombre";
             this.lblFiltroNombre.Size = new System.Drawing.Size(67, 20);
             this.lblFiltroNombre.TabIndex = 2;
@@ -78,7 +78,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(311, 37);
+            this.label1.Location = new System.Drawing.Point(305, 37);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(76, 20);
             this.label1.TabIndex = 4;
@@ -88,7 +88,7 @@
             // 
             this.lblFiltroMarca.AutoSize = true;
             this.lblFiltroMarca.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFiltroMarca.Location = new System.Drawing.Point(572, 38);
+            this.lblFiltroMarca.Location = new System.Drawing.Point(572, 37);
             this.lblFiltroMarca.Name = "lblFiltroMarca";
             this.lblFiltroMarca.Size = new System.Drawing.Size(52, 20);
             this.lblFiltroMarca.TabIndex = 5;
@@ -97,7 +97,7 @@
             // cbBoxMarca
             // 
             this.cbBoxMarca.FormattingEnabled = true;
-            this.cbBoxMarca.Location = new System.Drawing.Point(627, 38);
+            this.cbBoxMarca.Location = new System.Drawing.Point(630, 36);
             this.cbBoxMarca.Name = "cbBoxMarca";
             this.cbBoxMarca.Size = new System.Drawing.Size(147, 21);
             this.cbBoxMarca.TabIndex = 6;
@@ -105,7 +105,7 @@
             // cbBoxCategoria
             // 
             this.cbBoxCategoria.FormattingEnabled = true;
-            this.cbBoxCategoria.Location = new System.Drawing.Point(387, 37);
+            this.cbBoxCategoria.Location = new System.Drawing.Point(386, 37);
             this.cbBoxCategoria.Name = "cbBoxCategoria";
             this.cbBoxCategoria.Size = new System.Drawing.Size(147, 21);
             this.cbBoxCategoria.TabIndex = 7;
