@@ -22,7 +22,7 @@ namespace CatalogoArticulos
                 splash.ShowDialog(); // se abre una ventana modal para mostrar la pantalla de inicio
             }
        
-            Application.Run(new CatalogoArticulos());
+            Application.Run(new frmMenuPrincipal());
         }
     }
 }

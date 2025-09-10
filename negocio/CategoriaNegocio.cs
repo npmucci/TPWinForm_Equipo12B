@@ -60,6 +60,26 @@ namespace negocio
 
         }
 
+        public void EliminarCategoria(int id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                string query = "DELETE FROM CATEGORIAS WHERE Id = @id";
+                datos.SetearConsulta(query);
+                datos.SetearParametro("@id", id);
+                datos.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
+
 
     }
 }

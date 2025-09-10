@@ -43,5 +43,7 @@ namespace CatalogoArticulos
         {
             this.Close();   
         }
+
+    
     }
 }

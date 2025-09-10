@@ -58,5 +58,25 @@ namespace negocio
             }
 
         }
+
+        public void EliminarMarca(int id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                string query = "DELETE FROM MARCAS WHERE Id = @id";
+                datos.SetearConsulta(query);
+                datos.SetearParametro("@id", id);
+                datos.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
     }
 }

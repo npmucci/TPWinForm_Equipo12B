@@ -117,48 +117,47 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="close 161" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\close 16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="marca" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\marca.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="logo y texto" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logo y texto2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-    <comment>Imagen para pantalla de presentancion</comment>
-  </data>
-  <data name="logo y texto1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logo y texto.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Articulos" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Articulos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="edit 16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\edit 16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="close 16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\close 16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="close" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\close.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Categorias" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Categorias.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="plus" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\plus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="view" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\view.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="plus 16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\plus 16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAICAAAAEACACoCAAAFgAAACgAAAAgAAAAQAAAAAEACAAAAAAAAAQAAMMOAADDDgAAAAEAAAAB
+        AAAAAAAAAAD/ABK27AAOxv0ADsf9AA/F/gAPw/4AD8L+AA7C/gAOxP4ADsP+AA7F/gAOxf0AEMj9ABDH
+        /QAazf8AD83/AAzG/gALxv4AAP//AA/H/QANxv4AEMj+AA3H/gAM0f8ABNL/AAnT/wANz/8ABNT/AADK
+        /wAEvv8AD9n/AADw/wAA2v8AAc3/AAD+/wAQyf4AEc7/ABPP/wATz/4AE87+ABPO/wARzf8AD8n+AA7E
+        /QAPx/4AD8j+AA7I/gAQx/4ADsf+AA7J/gAQtvYADNL/AA7O/wAHsvkAD8T8ABCw8wAOyv4AD8r+AA/L
+        /gAOyv8ADsv+AB6N7gAPw/0AAPz/AAD0/wAAv/8AAM7/AADs/wAAyf8AAMb/AADf/wAA0/8AANL/AADN
+        /wAA0f8AAPf/AADd/wAA6f8AAOX/AADW/wAA6P8AANn/AAC+/wAA+v8AD8T+AA/D/gAPwv4ADsL+AA/B
+        /gAOw/4ADsT9AA/H/QAQyP4AEMn+ABDJ/gAQyf8AD8n+ABDJ/gAQyf4AD8n+AAXA/AAQyP4AEcn+AA/K
+        /wAOyf4ACr38ABDK/gAQyv4AD8r/AA/K/gAOyf4AC8T9AA/K/wAPyf4ADsj+AA7J/wAOyf4AD8n+AA/J
+        /gAMu/wAEMn+ABDJ/gAPx/4AD8r+AA/J/wAPyf4AEMn+AA/G/gAOyv8AD8n+AA/G/gAOxv4AD8n+AA7I
+        /wANwP4ADsD+AA7I/gAOyv4ADsn+AA7J/wANtf4ADY3+AA2M/gANjv4ADbj+AA/I/gAPyP4ADa/+AA2G
+        /gANhf4ADbL+AA2H/gAOsP4ADbv+AA2z/gAOy/8ADbH+AA29/gANtP4ADsT+AA7F/gAOxv4ADsX/AA7H
+        /gANk/4ADZH+AA3B/gANlP4ADbD+AA6F/gANvP4ADYn+AA6G/gAOy/4ADYT+AA7C/gAOqf4ADqb+AA2m
+        /gANqf4AD8v/AA/L/gAOx/4ADsn+AA/K/gAOyP4ADsj9AA/J/gAPyf4AD8n9AA7I/gAOyP4ADsn+AA/J
+        /gAOyv4ADcr+AA7J/gAOyf4ADsj+ABDJ/gAPyv8AEMr/AA/K/gAOyv8AD8n+AA/J/wAOy/8ADb//AA3C
+        /wAOyf8ADb/+AAyM/gAMkv4ADYX/AAyJ/gANu/4ADbz+AA2J/gANhv8ADbD+AA2z/gANhf4ADIr+AA29
+        /gANiv4ADbH+AA2w/wANtf4ADsf/AA61/gAOxf8ADcX/AA3G/wAOxf4ADZH+AAyR/gAMl/4ADcH+AA2X
+        /gANkP4ADYT/AA/L/wANpv4ADab/AA2r/gAOxv4ADaX+AA7K/gD///8AAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABMTExMAAEBBQkNERUZHSEkhQUpLIUhMTU5P
+        UFFSE1JTVBMTEzc4Lis5Ojo6Ozo6Ojo8OTo5Ojw5Ozs7PTo5OTo5Lz4/MzS/wMHBwsHDwcHBwcTBwcHD
+        xcHDw8PDwcHDwcbHNTYvu7zLzMzJyczJ+MzMzMzMzMzMzMz4+Pj4zMzLyb2+Kyu4bsuBzMnMzIGKzMzM
+        zMzMzMzMzIqKiorMzG7JuborK3xuboHJycnJtbbPz8/PzMzPz8/Ptm6Kim2BbsmCty8kfGxubcnJyfKw
+        sbLz9PX2ovX3s/e0sIGKbYFuyYKkLit8bm5tycnJz52Wlq/x19mrrK+vr5WbnIqBgW7JgqQuJHxuboHJ
+        ycnPmZWWltbX2avalpaqlZucioGBbsmCpDIuhX5ubcltyZyplZWV1tfZq6yWlq2Vm66LgYF+zoKkLySF
+        bm1tycnJz6mVlpbW19jY2t6WqpWbnIuMgX7OgoQvFoVuboHMycnMkaWm6+zt7qfv8KamqJqci4GBfsmC
+        hC4uhX5ugcnJycyMoqPn6OnS0uXo5+qii4GLgYF+zIKkLy6Ffn6BycnJzKCX4tzj5OXl5tzc4pehgYuM
+        0ovSgoQuLoV+fm3Jyc6BnZWVlt7f4J7h3paVmJ+Ki4uMfs6ShC0uhX5tbcnJyc+ZlZWV29fYmtrelZWY
+        m5yLjNJ9zpKEMRaFfs6MycnOz9yVlZXb19jZ2taVlZjdgYuM0ozOkoQxMJN+fozOzs7MlJWVldbX2Nna
+        25WWlZeKi4yMftKShDEWhX5+gcnOyc+Njo+P1NXTh9XUj4+QkYqLi4x+zpKELRaFfm6BycnJzIaH0NDQ
+        0dLS0dDQ04iJiouMgX7OgoQvFnx5bm3JycnJbYHPz8/MzMzMz8zMzG2BfX3Mfc6ChC4WfHlubcnJyclt
+        bm3JzMzMzMnMgc5+fn5+foF+zoKDLiR8eW5tycnJyW1tbcnMyc7JycxtfX5+bn59fX7Of4AuJGt5bm3J
+        ycnJbW1tyczJycnJycnJy8vLy8nJzcp6ey0ka2xubcnJycltbsnJzMlxcnN0dXNzdXVzdXVzdnd4DCRr
+        bGxtycnJyW1ubW3JaG9wJSYmJycnJygpKSgqKywMFmZnyMnJysrJy8vJyWhpahcXGBkaGxwdHh8gISIj
+        ExMUXF1eX2BgYGFiYWFjZGURFQAAAAAAAAAAAAAAExMTEw0OD1VWV1ZXWFlaWlsQERIAAAAAAAAAAAAA
+        AAATExMTAgMEBQYGBgcIBwkKCwMMAAAAAAAAAAAAAAAAAAEBAQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAQEBAf///////////////8AAAAOAAAABgAAAAYAAAAGAAAABgAAAAYAAAAGAAAABgAAAAYAA
+        AAGAAAABgAAAAYAAAAGAAAABgAAAAYAAAAGAAAABgAAAAYAAAAGAAAABgAAAAYAAAAGAAAABgAB//4AA
+        //+AAf//4Af/////////////
+</value>
   </data>
 </root>
