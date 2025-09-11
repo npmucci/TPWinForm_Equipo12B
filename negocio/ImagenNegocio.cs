@@ -9,11 +9,13 @@ using System.Threading.Tasks;
 namespace negocio
 {
  public class ImagenNegocio
+
     {
+        AccesoDatos datos = new AccesoDatos();
         public List<Imagen> ListarImagenes(int idArticulo)
         {
             List<Imagen> lista = new List<Imagen>();
-            AccesoDatos datos = new AccesoDatos();
+          
             //imagenes.setearConsulta("select ImagenUrl from Imagenes where IdArticulo = " + idArticulo + ";");
             datos.SetearConsulta("select Id,ImagenUrl from Imagenes where IdArticulo = @IdArticulo;");
             datos.SetearParametro("IdArticulo", idArticulo);
@@ -38,7 +40,6 @@ namespace negocio
         }
         public void AgregarImagenes(List<Imagen> urls, int idArticulo)
         {
-            AccesoDatos datos = new AccesoDatos();
             try
             {
                 foreach (var img in urls)
@@ -62,7 +63,7 @@ namespace negocio
         //elimino todas las imagenes de un articulo para despues agregar las nuevas
         public void EliminarImagen(int idArticulo)
         {
-            AccesoDatos datos = new AccesoDatos();
+          
             try
             {
                 string query = "DELETE FROM IMAGENES WHERE IdArticulo = @idArticulo"; 
@@ -79,19 +80,14 @@ namespace negocio
                 datos.CerrarConexion();
             }
         }
-
-        public void ModificarImagenes(List<Imagen> urls, int idArticulo)
+        private void EliminarImagenes(List<Imagen> eliminadas, int idArticulo)
         {
-            AccesoDatos datos = new AccesoDatos();
             try
             {
-                // Eliminar las imágenes existentes para el artículo asi no se duplican
-                EliminarImagen(idArticulo);
-                // Insertar las nuevas imágenes
-                foreach (var img in urls)
+                foreach (Imagen img in eliminadas)
                 {
-                    string insertQuery = "INSERT INTO IMAGENES (IdArticulo, ImagenUrl) VALUES (@idArticulo, @url)";
-                    datos.SetearConsulta(insertQuery);
+                    string query = "DELETE FROM IMAGENES WHERE IdArticulo = @idArticulo AND ImagenUrl = @url";
+                    datos.SetearConsulta(query);
                     datos.SetearParametro("@idArticulo", idArticulo);
                     datos.SetearParametro("@url", img.Url);
                     datos.EjecutarAccion();
@@ -106,5 +102,79 @@ namespace negocio
                 datos.CerrarConexion();
             }
         }
+
+        private void InsertarImagenes(List<Imagen> nuevas, int idArticulo)
+        {
+            try
+            {
+                foreach (Imagen img in nuevas)
+                {
+                    string query = "INSERT INTO IMAGENES (IdArticulo, ImagenUrl) VALUES (@idArticulo, @url)";
+                    datos.SetearConsulta(query);
+                    datos.SetearParametro("@idArticulo", idArticulo);
+                    datos.SetearParametro("@url", img.Url);
+                    datos.EjecutarAccion();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
+
+
+        public void ModificarImagenes(List<Imagen> imagenesActuales, int idArticulo, List<Imagen> imagenesOriginales)
+        {
+            List<Imagen> nuevas = ObtenerNuevasImagenes(imagenesActuales, imagenesOriginales);
+            List<Imagen> eliminadas = ObtenerImagenesEliminadas(imagenesActuales, imagenesOriginales);
+
+            
+            try
+            {
+                EliminarImagenes(eliminadas, idArticulo); //borro de la bbdd las imagnes que se eliminaron en el modificar articulo
+                InsertarImagenes(nuevas, idArticulo); //agrego a la bbdd las nuevas imagenes que se agregaron en el modificar articulo
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
+
+        private List<Imagen> ObtenerNuevasImagenes(List<Imagen> actuales, List<Imagen> originales)
+        {
+            List<Imagen> nuevas = new List<Imagen>();
+            // si no existe en originales, es nueva
+           foreach (var img in actuales)
+                {
+                    bool existeEnOriginales = originales.Exists(original => original.Url == img.Url);
+                    if (!existeEnOriginales)
+                        nuevas.Add(img);
+                }
+            
+            return nuevas;
+        }
+
+        private List<Imagen> ObtenerImagenesEliminadas(List<Imagen> actuales, List<Imagen> originales)
+        {
+            List<Imagen> eliminadas = new List<Imagen>();
+            // si no existe en actuales, la imagen se elimino
+            foreach (var img in originales)
+            {
+                bool existeEnActuales = actuales.Exists(actual => actual.Url == img.Url);
+                if (!existeEnActuales)
+                    eliminadas.Add(img);
+            }
+            return eliminadas;
+        }
+
+    
     }
 }

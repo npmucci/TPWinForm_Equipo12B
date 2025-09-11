@@ -18,6 +18,8 @@ namespace CatalogoArticulos
     public partial class frmAgregarArticulo : Form
     {
         private Articulo articulo = null;
+        private List<Imagen> imagenesOriginales = new List<Imagen>(); // para guardar las que me trae la bbdd
+
 
         public frmAgregarArticulo()
         {
@@ -56,7 +58,10 @@ namespace CatalogoArticulos
                     txbPrecio.Text = articulo.Precio.ToString();
                     cbxMarca.SelectedValue = articulo.Marca.Id;
                     cbxCategoria.SelectedValue = articulo.Categoria.Id;
+
                     imagenes = new List<Imagen>(articulo.Imagenes);
+                    imagenesOriginales = new List<Imagen>(articulo.Imagenes); //para comparar y saber si hubo cambios
+                    
                     foreach (var img in imagenes)
                     {
                         lbxListaImagenes.Items.Add(img);
@@ -195,8 +200,8 @@ namespace CatalogoArticulos
 
                 if (articulo.Id != 0) // Si tiene un ID válido, es modificación
                 {
-                    negocio.Modificar(articulo); 
-                    imagenNegocio.ModificarImagenes(articulo.Imagenes, articulo.Id);
+                    negocio.Modificar(articulo);
+                    imagenNegocio.ModificarImagenes(articulo.Imagenes, articulo.Id, imagenesOriginales);
                     MessageBox.Show("Artículo modificado con éxito.");
                 }
                 else // Alta de nuevo artículo
