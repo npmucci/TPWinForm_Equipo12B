@@ -108,31 +108,30 @@ namespace CatalogoArticulos
             try
             {
                 ArticuloNegocio negocio = new ArticuloNegocio();
-                var lista = negocio.Listar(); 
+                var lista = negocio.Listar();
 
                 
                 if (!string.IsNullOrWhiteSpace(txtBusquedaNombre.Text))
                 {
-                    lista = lista.Where(a => a.Nombre.IndexOf(txtBusquedaNombre.Text, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
+                    lista = lista.FindAll(a => a.Nombre.IndexOf(txtBusquedaNombre.Text, StringComparison.OrdinalIgnoreCase) >= 0);
                 }
 
                 
                 int idCategoria = Convert.ToInt32(cbBoxCategoria.SelectedValue);
-                if (idCategoria != 0) 
+                if (idCategoria != 0)
                 {
-                    lista = lista.Where(a => a.Categoria.Id == idCategoria).ToList();
+                    lista = lista.FindAll(a => a.Categoria.Id == idCategoria);
                 }
 
                 
                 int idMarca = Convert.ToInt32(cbBoxMarca.SelectedValue);
-                if (idMarca != 0) 
+                if (idMarca != 0)
                 {
-                    lista = lista.Where(a => a.Marca.Id == idMarca).ToList();
+                    lista = lista.FindAll(a => a.Marca.Id == idMarca);
                 }
 
                 dgvArticulos.DataSource = lista;
 
-                
                 if (dgvArticulos.Columns["ID"] != null)
                     dgvArticulos.Columns["ID"].Visible = false;
             }
@@ -141,8 +140,6 @@ namespace CatalogoArticulos
                 MessageBox.Show("Error al aplicar filtros: " + ex.Message);
             }
         }
-
-
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
