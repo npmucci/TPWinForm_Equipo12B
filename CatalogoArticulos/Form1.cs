@@ -98,10 +98,19 @@ namespace CatalogoArticulos
             try
             {
                 pbxArticulo.Load(url);
+                if (imagenesArticuloActual != null && imagenesArticuloActual.Count > 0)
+                {
+                    lblIndiceImagen.Text = $"Imagen {indiceImagenActual + 1} de {imagenesArticuloActual.Count}";
+                }
+                else
+                {
+                    lblIndiceImagen.Text = "Sin imágenes";
+                }
             }
             catch
             {
                 pbxArticulo.Load("https://efectocolibri.com/wp-content/uploads/2021/01/placeholder.png");
+                lblIndiceImagen.Text = "Imagen no disponible";
             }
         }
         
@@ -181,6 +190,8 @@ namespace CatalogoArticulos
                 
                 cargarImagen("https://efectocolibri.com/wp-content/uploads/2021/01/placeholder.png");
             }
+            //  Actualiza estado de botones
+            ActualizarEstadoBotones();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -253,6 +264,15 @@ namespace CatalogoArticulos
 
             }
         }
+
+        private void ActualizarEstadoBotones()
+        {
+            // Si hay 0 o 1 imágenes, se deshabilitan los botones (no tiene sentido navegar)
+            bool habilitar = imagenesArticuloActual.Count > 1;
+            btnIzquierda.Enabled = habilitar;
+            btnDerecha.Enabled = habilitar;
+        }
+
 
         private void TimerBusquedaTexto_Tick(object sender, EventArgs e)
         {

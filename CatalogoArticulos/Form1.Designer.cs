@@ -37,6 +37,9 @@
             this.cbBoxMarca = new System.Windows.Forms.ComboBox();
             this.cbBoxCategoria = new System.Windows.Forms.ComboBox();
             this.pnlBotones = new System.Windows.Forms.Panel();
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnAgregar = new System.Windows.Forms.Button();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.gxbFiltrado = new System.Windows.Forms.GroupBox();
             this.dgvArticulos = new System.Windows.Forms.DataGridView();
@@ -46,9 +49,7 @@
             this.txbLogo = new System.Windows.Forms.TextBox();
             this.pbxArticulo = new System.Windows.Forms.PictureBox();
             this.pxbLogo = new System.Windows.Forms.PictureBox();
-            this.btnEditar = new System.Windows.Forms.Button();
-            this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnAgregar = new System.Windows.Forms.Button();
+            this.lblIndiceImagen = new System.Windows.Forms.Label();
             this.pnlBotones.SuspendLayout();
             this.gxbFiltrado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
@@ -62,7 +63,7 @@
             this.lblFiltroNombre.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFiltroNombre.Location = new System.Drawing.Point(7, 38);
             this.lblFiltroNombre.Name = "lblFiltroNombre";
-            this.lblFiltroNombre.Size = new System.Drawing.Size(67, 20);
+            this.lblFiltroNombre.Size = new System.Drawing.Size(81, 25);
             this.lblFiltroNombre.TabIndex = 2;
             this.lblFiltroNombre.Text = "Nombre";
             // 
@@ -80,7 +81,7 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(305, 37);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 20);
+            this.label1.Size = new System.Drawing.Size(94, 25);
             this.label1.TabIndex = 4;
             this.label1.Text = "Categoria";
             // 
@@ -90,7 +91,7 @@
             this.lblFiltroMarca.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFiltroMarca.Location = new System.Drawing.Point(572, 37);
             this.lblFiltroMarca.Name = "lblFiltroMarca";
-            this.lblFiltroMarca.Size = new System.Drawing.Size(52, 20);
+            this.lblFiltroMarca.Size = new System.Drawing.Size(65, 25);
             this.lblFiltroMarca.TabIndex = 5;
             this.lblFiltroMarca.Text = "Marca";
             // 
@@ -119,107 +120,6 @@
             this.pnlBotones.Name = "pnlBotones";
             this.pnlBotones.Size = new System.Drawing.Size(575, 49);
             this.pnlBotones.TabIndex = 11;
-            // 
-            // lblTitulo
-            // 
-            this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 20.29091F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.Location = new System.Drawing.Point(276, 87);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(335, 38);
-            this.lblTitulo.TabIndex = 12;
-            this.lblTitulo.Text = "CATALOGO PRODUCTOS";
-            // 
-            // gxbFiltrado
-            // 
-            this.gxbFiltrado.BackColor = System.Drawing.Color.MidnightBlue;
-            this.gxbFiltrado.Controls.Add(this.cbBoxMarca);
-            this.gxbFiltrado.Controls.Add(this.lblFiltroNombre);
-            this.gxbFiltrado.Controls.Add(this.lblFiltroMarca);
-            this.gxbFiltrado.Controls.Add(this.txtBusquedaNombre);
-            this.gxbFiltrado.Controls.Add(this.cbBoxCategoria);
-            this.gxbFiltrado.Controls.Add(this.label1);
-            this.gxbFiltrado.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.gxbFiltrado.Location = new System.Drawing.Point(78, 0);
-            this.gxbFiltrado.Name = "gxbFiltrado";
-            this.gxbFiltrado.Size = new System.Drawing.Size(831, 80);
-            this.gxbFiltrado.TabIndex = 13;
-            this.gxbFiltrado.TabStop = false;
-            this.gxbFiltrado.Text = "FILTRADO";
-            // 
-            // dgvArticulos
-            // 
-            this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvArticulos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvArticulos.Location = new System.Drawing.Point(0, 134);
-            this.dgvArticulos.MultiSelect = false;
-            this.dgvArticulos.Name = "dgvArticulos";
-            this.dgvArticulos.RowHeadersWidth = 47;
-            this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvArticulos.Size = new System.Drawing.Size(644, 262);
-            this.dgvArticulos.TabIndex = 14;
-            this.dgvArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
-            // 
-            // imageList1
-            // 
-            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            // 
-            // btnIzquierda
-            // 
-            this.btnIzquierda.Location = new System.Drawing.Point(676, 396);
-            this.btnIzquierda.Name = "btnIzquierda";
-            this.btnIzquierda.Size = new System.Drawing.Size(75, 23);
-            this.btnIzquierda.TabIndex = 16;
-            this.btnIzquierda.Text = "<";
-            this.btnIzquierda.UseVisualStyleBackColor = true;
-            this.btnIzquierda.Click += new System.EventHandler(this.btnIzquierda_Click);
-            // 
-            // btnDerecha
-            // 
-            this.btnDerecha.Location = new System.Drawing.Point(813, 396);
-            this.btnDerecha.Name = "btnDerecha";
-            this.btnDerecha.Size = new System.Drawing.Size(75, 23);
-            this.btnDerecha.TabIndex = 17;
-            this.btnDerecha.Text = ">";
-            this.btnDerecha.UseVisualStyleBackColor = true;
-            this.btnDerecha.Click += new System.EventHandler(this.btnDerecha_Click);
-            // 
-            // txbLogo
-            // 
-            this.txbLogo.BackColor = System.Drawing.Color.MidnightBlue;
-            this.txbLogo.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txbLogo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbLogo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txbLogo.Location = new System.Drawing.Point(-4, 45);
-            this.txbLogo.Multiline = true;
-            this.txbLogo.Name = "txbLogo";
-            this.txbLogo.Size = new System.Drawing.Size(82, 35);
-            this.txbLogo.TabIndex = 18;
-            this.txbLogo.Text = "Catalog Manager";
-            this.txbLogo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // pbxArticulo
-            // 
-            this.pbxArticulo.Location = new System.Drawing.Point(647, 134);
-            this.pbxArticulo.Name = "pbxArticulo";
-            this.pbxArticulo.Size = new System.Drawing.Size(262, 262);
-            this.pbxArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbxArticulo.TabIndex = 15;
-            this.pbxArticulo.TabStop = false;
-            // 
-            // pxbLogo
-            // 
-            this.pxbLogo.BackColor = System.Drawing.Color.MidnightBlue;
-            this.pxbLogo.Image = global::CatalogoArticulos.Properties.Resources.logo;
-            this.pxbLogo.InitialImage = ((System.Drawing.Image)(resources.GetObject("pxbLogo.InitialImage")));
-            this.pxbLogo.Location = new System.Drawing.Point(0, 0);
-            this.pxbLogo.Name = "pxbLogo";
-            this.pxbLogo.Size = new System.Drawing.Size(88, 46);
-            this.pxbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pxbLogo.TabIndex = 0;
-            this.pxbLogo.TabStop = false;
             // 
             // btnEditar
             // 
@@ -265,12 +165,124 @@
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
+            // lblTitulo
+            // 
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 20.29091F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.Location = new System.Drawing.Point(276, 87);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(388, 45);
+            this.lblTitulo.TabIndex = 12;
+            this.lblTitulo.Text = "CATALOGO PRODUCTOS";
+            // 
+            // gxbFiltrado
+            // 
+            this.gxbFiltrado.BackColor = System.Drawing.Color.MidnightBlue;
+            this.gxbFiltrado.Controls.Add(this.cbBoxMarca);
+            this.gxbFiltrado.Controls.Add(this.lblFiltroNombre);
+            this.gxbFiltrado.Controls.Add(this.lblFiltroMarca);
+            this.gxbFiltrado.Controls.Add(this.txtBusquedaNombre);
+            this.gxbFiltrado.Controls.Add(this.cbBoxCategoria);
+            this.gxbFiltrado.Controls.Add(this.label1);
+            this.gxbFiltrado.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.gxbFiltrado.Location = new System.Drawing.Point(78, 0);
+            this.gxbFiltrado.Name = "gxbFiltrado";
+            this.gxbFiltrado.Size = new System.Drawing.Size(831, 80);
+            this.gxbFiltrado.TabIndex = 13;
+            this.gxbFiltrado.TabStop = false;
+            this.gxbFiltrado.Text = "FILTRADO";
+            // 
+            // dgvArticulos
+            // 
+            this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvArticulos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvArticulos.Location = new System.Drawing.Point(0, 134);
+            this.dgvArticulos.MultiSelect = false;
+            this.dgvArticulos.Name = "dgvArticulos";
+            this.dgvArticulos.RowHeadersWidth = 47;
+            this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvArticulos.Size = new System.Drawing.Size(644, 262);
+            this.dgvArticulos.TabIndex = 14;
+            this.dgvArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // btnIzquierda
+            // 
+            this.btnIzquierda.Location = new System.Drawing.Point(676, 398);
+            this.btnIzquierda.Name = "btnIzquierda";
+            this.btnIzquierda.Size = new System.Drawing.Size(75, 23);
+            this.btnIzquierda.TabIndex = 16;
+            this.btnIzquierda.Text = "<";
+            this.btnIzquierda.UseVisualStyleBackColor = true;
+            this.btnIzquierda.Click += new System.EventHandler(this.btnIzquierda_Click);
+            // 
+            // btnDerecha
+            // 
+            this.btnDerecha.Location = new System.Drawing.Point(813, 398);
+            this.btnDerecha.Name = "btnDerecha";
+            this.btnDerecha.Size = new System.Drawing.Size(75, 23);
+            this.btnDerecha.TabIndex = 17;
+            this.btnDerecha.Text = ">";
+            this.btnDerecha.UseVisualStyleBackColor = true;
+            this.btnDerecha.Click += new System.EventHandler(this.btnDerecha_Click);
+            // 
+            // txbLogo
+            // 
+            this.txbLogo.BackColor = System.Drawing.Color.MidnightBlue;
+            this.txbLogo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txbLogo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbLogo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.txbLogo.Location = new System.Drawing.Point(-4, 45);
+            this.txbLogo.Multiline = true;
+            this.txbLogo.Name = "txbLogo";
+            this.txbLogo.Size = new System.Drawing.Size(82, 35);
+            this.txbLogo.TabIndex = 18;
+            this.txbLogo.Text = "Catalog Manager";
+            this.txbLogo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // pbxArticulo
+            // 
+            this.pbxArticulo.Location = new System.Drawing.Point(647, 134);
+            this.pbxArticulo.Name = "pbxArticulo";
+            this.pbxArticulo.Size = new System.Drawing.Size(262, 237);
+            this.pbxArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxArticulo.TabIndex = 15;
+            this.pbxArticulo.TabStop = false;
+            // 
+            // pxbLogo
+            // 
+            this.pxbLogo.BackColor = System.Drawing.Color.MidnightBlue;
+            this.pxbLogo.Image = global::CatalogoArticulos.Properties.Resources.logo;
+            this.pxbLogo.InitialImage = ((System.Drawing.Image)(resources.GetObject("pxbLogo.InitialImage")));
+            this.pxbLogo.Location = new System.Drawing.Point(0, 0);
+            this.pxbLogo.Name = "pxbLogo";
+            this.pxbLogo.Size = new System.Drawing.Size(88, 46);
+            this.pxbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pxbLogo.TabIndex = 0;
+            this.pxbLogo.TabStop = false;
+            // 
+            // lblIndiceImagen
+            // 
+            this.lblIndiceImagen.AutoSize = true;
+            this.lblIndiceImagen.Font = new System.Drawing.Font("Segoe UI", 7.854546F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIndiceImagen.Location = new System.Drawing.Point(730, 376);
+            this.lblIndiceImagen.Name = "lblIndiceImagen";
+            this.lblIndiceImagen.Size = new System.Drawing.Size(86, 15);
+            this.lblIndiceImagen.TabIndex = 19;
+            this.lblIndiceImagen.Text = "Imagen 0 de 0";
+            // 
             // CatalogoArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(909, 470);
+            this.Controls.Add(this.lblIndiceImagen);
             this.Controls.Add(this.txbLogo);
             this.Controls.Add(this.btnDerecha);
             this.Controls.Add(this.btnIzquierda);
@@ -317,6 +329,7 @@
         private System.Windows.Forms.Button btnIzquierda;
         private System.Windows.Forms.Button btnDerecha;
         private System.Windows.Forms.TextBox txbLogo;
+        private System.Windows.Forms.Label lblIndiceImagen;
     }
 }
 
