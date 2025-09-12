@@ -29,6 +29,7 @@ namespace CatalogoArticulos
 
             cargarDatos();
             cargarCategorias();
+            ordenPrecio();
             cargarMarcas();
 
             timerBusquedaTexto = new Timer();
@@ -36,6 +37,14 @@ namespace CatalogoArticulos
             timerBusquedaTexto.Tick += TimerBusquedaTexto_Tick; // Asociamos el envento Tick del timer a la funcion TimerBusquedaTexto_Tick
                                                                 // Cada vez que se dispare el evento Tick, se ejecutara la funcion
 
+        }
+        private void ordenPrecio()
+        {
+            cboOrden.Items.Clear();
+            cboOrden.Items.Add("Sin ordenar");           
+            cboOrden.Items.Add("Precio: menor a mayor");  
+            cboOrden.Items.Add("Precio: mayor a menor"); 
+            cboOrden.SelectedIndex = 0; 
         }
 
         private void cargarCategorias()
@@ -274,6 +283,30 @@ namespace CatalogoArticulos
         {
             
             AplicarFiltros();
+        }
+
+        private void cboOrden_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string orden = "";
+
+            if (cboOrden.SelectedItem != null)
+            {
+                switch (cboOrden.SelectedItem.ToString())
+                {
+                    case "Precio: menor a mayor":
+                        orden = "asc";
+                        break;
+                    case "Precio: mayor a menor":
+                        orden = "desc";
+                        break;
+                    case "Sin orden":
+                        orden = "";
+                        break;
+                }
+            }
+
+            var negocio = new ArticuloNegocio();
+            dgvArticulos.DataSource = negocio.Listar(orden);
         }
     }
 }

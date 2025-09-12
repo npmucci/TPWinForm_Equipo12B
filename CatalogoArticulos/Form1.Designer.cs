@@ -37,6 +37,9 @@
             this.cbBoxMarca = new System.Windows.Forms.ComboBox();
             this.cbBoxCategoria = new System.Windows.Forms.ComboBox();
             this.pnlBotones = new System.Windows.Forms.Panel();
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnAgregar = new System.Windows.Forms.Button();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.gxbFiltrado = new System.Windows.Forms.GroupBox();
             this.dgvArticulos = new System.Windows.Forms.DataGridView();
@@ -46,9 +49,8 @@
             this.txbLogo = new System.Windows.Forms.TextBox();
             this.pbxArticulo = new System.Windows.Forms.PictureBox();
             this.pxbLogo = new System.Windows.Forms.PictureBox();
-            this.btnEditar = new System.Windows.Forms.Button();
-            this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnAgregar = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cboOrden = new System.Windows.Forms.ComboBox();
             this.pnlBotones.SuspendLayout();
             this.gxbFiltrado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
@@ -60,7 +62,7 @@
             // 
             this.lblFiltroNombre.AutoSize = true;
             this.lblFiltroNombre.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFiltroNombre.Location = new System.Drawing.Point(7, 38);
+            this.lblFiltroNombre.Location = new System.Drawing.Point(69, 20);
             this.lblFiltroNombre.Name = "lblFiltroNombre";
             this.lblFiltroNombre.Size = new System.Drawing.Size(67, 20);
             this.lblFiltroNombre.TabIndex = 2;
@@ -68,9 +70,9 @@
             // 
             // txtBusquedaNombre
             // 
-            this.txtBusquedaNombre.Location = new System.Drawing.Point(80, 38);
+            this.txtBusquedaNombre.Location = new System.Drawing.Point(23, 43);
             this.txtBusquedaNombre.Name = "txtBusquedaNombre";
-            this.txtBusquedaNombre.Size = new System.Drawing.Size(212, 20);
+            this.txtBusquedaNombre.Size = new System.Drawing.Size(167, 20);
             this.txtBusquedaNombre.TabIndex = 3;
             this.txtBusquedaNombre.TextChanged += new System.EventHandler(this.txtBusquedaNombre_TextChanged);
             // 
@@ -78,7 +80,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(305, 37);
+            this.label1.Location = new System.Drawing.Point(272, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(76, 20);
             this.label1.TabIndex = 4;
@@ -88,7 +90,7 @@
             // 
             this.lblFiltroMarca.AutoSize = true;
             this.lblFiltroMarca.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFiltroMarca.Location = new System.Drawing.Point(572, 37);
+            this.lblFiltroMarca.Location = new System.Drawing.Point(481, 20);
             this.lblFiltroMarca.Name = "lblFiltroMarca";
             this.lblFiltroMarca.Size = new System.Drawing.Size(52, 20);
             this.lblFiltroMarca.TabIndex = 5;
@@ -97,7 +99,7 @@
             // cbBoxMarca
             // 
             this.cbBoxMarca.FormattingEnabled = true;
-            this.cbBoxMarca.Location = new System.Drawing.Point(630, 36);
+            this.cbBoxMarca.Location = new System.Drawing.Point(436, 42);
             this.cbBoxMarca.Name = "cbBoxMarca";
             this.cbBoxMarca.Size = new System.Drawing.Size(147, 21);
             this.cbBoxMarca.TabIndex = 6;
@@ -105,7 +107,7 @@
             // cbBoxCategoria
             // 
             this.cbBoxCategoria.FormattingEnabled = true;
-            this.cbBoxCategoria.Location = new System.Drawing.Point(386, 37);
+            this.cbBoxCategoria.Location = new System.Drawing.Point(237, 42);
             this.cbBoxCategoria.Name = "cbBoxCategoria";
             this.cbBoxCategoria.Size = new System.Drawing.Size(147, 21);
             this.cbBoxCategoria.TabIndex = 7;
@@ -120,6 +122,50 @@
             this.pnlBotones.Size = new System.Drawing.Size(575, 49);
             this.pnlBotones.TabIndex = 11;
             // 
+            // btnEditar
+            // 
+            this.btnEditar.Font = new System.Drawing.Font("Segoe UI Semibold", 9.818182F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditar.Image = global::CatalogoArticulos.Properties.Resources.edit;
+            this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEditar.Location = new System.Drawing.Point(413, 9);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(104, 37);
+            this.btnEditar.TabIndex = 2;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Font = new System.Drawing.Font("Segoe UI Semibold", 9.818182F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminar.Image = global::CatalogoArticulos.Properties.Resources.close;
+            this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEliminar.Location = new System.Drawing.Point(253, 9);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(104, 37);
+            this.btnEliminar.TabIndex = 1;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.Font = new System.Drawing.Font("Segoe UI Semibold", 9.818182F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregar.Image = global::CatalogoArticulos.Properties.Resources.plus;
+            this.btnAgregar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnAgregar.Location = new System.Drawing.Point(89, 9);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(104, 37);
+            this.btnAgregar.TabIndex = 0;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
             // lblTitulo
             // 
             this.lblTitulo.AutoSize = true;
@@ -133,8 +179,10 @@
             // gxbFiltrado
             // 
             this.gxbFiltrado.BackColor = System.Drawing.Color.MidnightBlue;
+            this.gxbFiltrado.Controls.Add(this.cboOrden);
             this.gxbFiltrado.Controls.Add(this.cbBoxMarca);
             this.gxbFiltrado.Controls.Add(this.lblFiltroNombre);
+            this.gxbFiltrado.Controls.Add(this.label2);
             this.gxbFiltrado.Controls.Add(this.lblFiltroMarca);
             this.gxbFiltrado.Controls.Add(this.txtBusquedaNombre);
             this.gxbFiltrado.Controls.Add(this.cbBoxCategoria);
@@ -221,49 +269,24 @@
             this.pxbLogo.TabIndex = 0;
             this.pxbLogo.TabStop = false;
             // 
-            // btnEditar
+            // label2
             // 
-            this.btnEditar.Font = new System.Drawing.Font("Segoe UI Semibold", 9.818182F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditar.Image = global::CatalogoArticulos.Properties.Resources.edit;
-            this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditar.Location = new System.Drawing.Point(413, 9);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(104, 37);
-            this.btnEditar.TabIndex = 2;
-            this.btnEditar.Text = "Editar";
-            this.btnEditar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnEditar.UseVisualStyleBackColor = true;
-            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(663, 20);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(113, 20);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Ordenar Precio";
             // 
-            // btnEliminar
+            // cboOrden
             // 
-            this.btnEliminar.Font = new System.Drawing.Font("Segoe UI Semibold", 9.818182F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminar.Image = global::CatalogoArticulos.Properties.Resources.close;
-            this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEliminar.Location = new System.Drawing.Point(253, 9);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(104, 37);
-            this.btnEliminar.TabIndex = 1;
-            this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnEliminar.UseVisualStyleBackColor = true;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
-            // 
-            // btnAgregar
-            // 
-            this.btnAgregar.Font = new System.Drawing.Font("Segoe UI Semibold", 9.818182F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregar.Image = global::CatalogoArticulos.Properties.Resources.plus;
-            this.btnAgregar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnAgregar.Location = new System.Drawing.Point(89, 9);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(104, 37);
-            this.btnAgregar.TabIndex = 0;
-            this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAgregar.UseVisualStyleBackColor = true;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            this.cboOrden.FormattingEnabled = true;
+            this.cboOrden.Location = new System.Drawing.Point(643, 42);
+            this.cboOrden.Name = "cboOrden";
+            this.cboOrden.Size = new System.Drawing.Size(147, 21);
+            this.cboOrden.TabIndex = 6;
+            this.cboOrden.SelectedIndexChanged += new System.EventHandler(this.cboOrden_SelectedIndexChanged);
             // 
             // CatalogoArticulos
             // 
@@ -317,6 +340,8 @@
         private System.Windows.Forms.Button btnIzquierda;
         private System.Windows.Forms.Button btnDerecha;
         private System.Windows.Forms.TextBox txbLogo;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cboOrden;
     }
 }
 
