@@ -48,7 +48,8 @@ namespace negocio
                         art.Categoria.Descripcion = datos.Lector["Categoria"].ToString();
 
                     }
-                    art.Imagenes = imagen.ListarImagenes(art.Id);
+                    art.Imagenes = new List<Imagen>();  
+                    art.Imagenes  = imagen.ListarImagenes(art.Id);
                     lista.Add(art);
                 }
 

@@ -90,6 +90,7 @@ namespace CatalogoArticulos
             }
         }
 
+        
 
         private void cargarImagen(string url)
         {
@@ -103,6 +104,7 @@ namespace CatalogoArticulos
                 pbxArticulo.Load("https://efectocolibri.com/wp-content/uploads/2021/01/placeholder.png");
             }
         }
+        
         private void AplicarFiltros()
         {
             try
@@ -153,28 +155,32 @@ namespace CatalogoArticulos
 
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
         {
-
-            if (dgvArticulos.CurrentRow != null) // Verifica que haya una fila seleccionada
+            // Verifica que haya una fila seleccionada ANTES de hacer cualquier cosa.
+            if (dgvArticulos.CurrentRow == null)
             {
-                Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem; // Guardamos el articulo seleccionado
-
-                if (seleccionado.Imagenes != null && seleccionado.Imagenes.Count > 0)   // El articulo tiene imagenes?
-                {
-                    imagenesArticuloActual = seleccionado.Imagenes;   // Guardamos la lista completa de imagenes del articulo
-
-                    indiceImagenActual = 0;   // Reseteamos al primer índice
-
-                    cargarImagen(imagenesArticuloActual[indiceImagenActual].Url);  // Cargamos la primer imagen
-                }
-                else
-                {
-
-                    imagenesArticuloActual.Clear(); // Si no tiene imagenes, limpiamos la lista y mostramos una imagen por defecto
-                    indiceImagenActual = 0;
-                    cargarImagen("https://efectocolibri.com/wp-content/uploads/2021/01/placeholder.png");
-                }
+                return; 
             }
 
+            
+            if (pbxArticulo.Image != null)
+            {
+                pbxArticulo.Image.Dispose();
+                pbxArticulo.Image = null;
+            }
+
+            Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+
+            if (seleccionado.Imagenes != null && seleccionado.Imagenes.Count > 0)
+            {
+                imagenesArticuloActual = seleccionado.Imagenes;
+                indiceImagenActual = 0;
+                cargarImagen(imagenesArticuloActual[indiceImagenActual].Url);
+            }
+            else
+            {
+                
+                cargarImagen("https://efectocolibri.com/wp-content/uploads/2021/01/placeholder.png");
+            }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
