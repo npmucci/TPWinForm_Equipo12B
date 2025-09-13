@@ -29,6 +29,7 @@ namespace CatalogoArticulos
 
             cargarDatos();
             cargarCategorias();
+            ordenPrecio();
             cargarMarcas();
 
             timerBusquedaTexto = new Timer();
@@ -36,6 +37,14 @@ namespace CatalogoArticulos
             timerBusquedaTexto.Tick += TimerBusquedaTexto_Tick; // Asociamos el envento Tick del timer a la funcion TimerBusquedaTexto_Tick
                                                                 // Cada vez que se dispare el evento Tick, se ejecutara la funcion
 
+        }
+        private void ordenPrecio()
+        {
+            cboOrden.Items.Clear();
+            cboOrden.Items.Add("Sin ordenar");           
+            cboOrden.Items.Add("Precio: menor a mayor");  
+            cboOrden.Items.Add("Precio: mayor a menor"); 
+            cboOrden.SelectedIndex = 0; 
         }
 
         private void cargarCategorias()
@@ -98,10 +107,19 @@ namespace CatalogoArticulos
             try
             {
                 pbxArticulo.Load(url);
+                if (imagenesArticuloActual != null && imagenesArticuloActual.Count > 0)
+                {
+                    lblIndiceImagen.Text = $"Imagen {indiceImagenActual + 1} de {imagenesArticuloActual.Count}";
+                }
+                else
+                {
+                    lblIndiceImagen.Text = "Sin imágenes";
+                }
             }
             catch
             {
                 pbxArticulo.Load("https://efectocolibri.com/wp-content/uploads/2021/01/placeholder.png");
+                lblIndiceImagen.Text = "Imagen no disponible";
             }
         }
         
@@ -181,6 +199,8 @@ namespace CatalogoArticulos
                 
                 cargarImagen("https://efectocolibri.com/wp-content/uploads/2021/01/placeholder.png");
             }
+            //  Actualiza estado de botones
+            ActualizarEstadoBotones();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -254,6 +274,15 @@ namespace CatalogoArticulos
             }
         }
 
+        private void ActualizarEstadoBotones()
+        {
+            // Si hay 0 o 1 imágenes, se deshabilitan los botones (no tiene sentido navegar)
+            bool habilitar = imagenesArticuloActual.Count > 1;
+            btnIzquierda.Enabled = habilitar;
+            btnDerecha.Enabled = habilitar;
+        }
+
+
         private void TimerBusquedaTexto_Tick(object sender, EventArgs e)
         {
             // Cada vez que pasa el tiempo estipulado en el timer, se ejecuta esta funcion
@@ -280,6 +309,30 @@ namespace CatalogoArticulos
         {
             
             AplicarFiltros();
+        }
+
+        private void cboOrden_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string orden = "";
+
+            if (cboOrden.SelectedItem != null)
+            {
+                switch (cboOrden.SelectedItem.ToString())
+                {
+                    case "Precio: menor a mayor":
+                        orden = "asc";
+                        break;
+                    case "Precio: mayor a menor":
+                        orden = "desc";
+                        break;
+                    case "Sin orden":
+                        orden = "";
+                        break;
+                }
+            }
+
+            var negocio = new ArticuloNegocio();
+            dgvArticulos.DataSource = negocio.Listar(orden);
         }
     }
 }

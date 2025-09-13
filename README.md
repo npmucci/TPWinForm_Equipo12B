@@ -59,7 +59,67 @@ Cada artículo deberá contar con la siguiente información:
 
 
 
-### 📂 Estructura del proyecto
+## 📂 Estructura del proyecto
+
+
+
+#### 🖼 Capa de Presentación (UI / Formularios)
+
+
+
+📌 Acá van todos los WinForms que interactúan con el usuario.
+
+- Form1 → Catalogo de articulos con listado completo
+
+- SplashScreen → Pantalla de carga inicial.
+
+- frmMenuPrincipal → Menú central con navegación al resto de formularios.
+
+- AgregarArticulo → Form para registrar/editar artículos.
+
+- AgregarCategoria → Form para registrar categorías.
+
+- AgregarMarca → Form para registrar marcas.
+
+- frmCategorias → Listado/gestión de categorías.
+
+- frmMarcas → Listado/gestión de marcas.
+
+
+
+#### 🧩 Capa de Dominio (Entidades / Modelos)
+
+
+- Articulo → Atributos como Id, Nombre, Código Descripcion, Precio, Categoria, Marca, List<Imagen>.
+
+- Categoria → Atributos como Id, Descripcion.
+
+- Marca → Atributos como Id, Descripcion.
+
+- Imagen → Atributos como Id, Url e IdArticulo (para asociar imágenes a artículos).
+
+
+
+#### 🏗 Capa de Negocio (Reglas y Acceso a Datos)
+
+
+ 📌 Clases que contienen la lógica de negocio y comunicación con la base de datos.
+
+- AccesoDatos
+👉 Clase de utilidad para manejar conexiones, consultas (SqlConnection, SqlCommand, etc.).
+⚡ Ejemplo: abrir conexión, ejecutar SELECT, INSERT, UPDATE, DELETE.
+
+- ArticuloNegocio
+👉 Métodos como listar(), agregarArticulo , modificarArticulo, eliminarArticulo.
+
+- CategoriaNegocio
+👉 Atla/Baja de categorías.
+
+- MarcaNegocio
+👉 Atla/Baja  de marcas.
+
+- ImagenNegocio
+👉 Manejo de imágenes (asociar, listar, eliminar).
 
 
 

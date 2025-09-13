@@ -1,5 +1,6 @@
 ﻿using Dominio;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,7 @@ namespace negocio
 {
     public class ArticuloNegocio
     {
-        public List<Articulo> Listar()
+        public List<Articulo> Listar(string orden = "")
         {
             List<Articulo> lista = new List<Articulo>();
             AccesoDatos datos = new AccesoDatos();
@@ -19,12 +20,18 @@ namespace negocio
 
             try
             {
-                datos.SetearConsulta(@"SELECT A.Id, A.Codigo, A.Nombre, A.Descripcion, A.Precio,
+                string query = (@"SELECT A.Id, A.Codigo, A.Nombre, A.Descripcion, A.Precio,
                 M.Id AS IdMarca, M.Descripcion AS Marca,
                 C.Id AS IdCategoria, C.Descripcion AS Categoria
                 FROM dbo.ARTICULOS A
                 JOIN dbo.MARCAS M ON A.IdMarca = M.Id
                 JOIN dbo.CATEGORIAS C ON A.IdCategoria = C.Id");
+                if (orden == "asc")
+                    query += " ORDER BY A.Precio ASC";
+                else if (orden == "desc")
+                    query += " ORDER BY A.Precio DESC";
+
+                datos.SetearConsulta(query);
                 datos.EjecutarLectura();
 
                 while (datos.Lector.Read())
