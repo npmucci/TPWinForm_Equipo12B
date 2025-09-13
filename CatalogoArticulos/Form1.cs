@@ -164,13 +164,13 @@ namespace CatalogoArticulos
             
             if (pbxArticulo.Image != null)
             {
-                pbxArticulo.Image.Dispose();
-                pbxArticulo.Image = null;
+                pbxArticulo.Image.Dispose(); // Libera la imagen actual para evitar problemas de memoria
+                pbxArticulo.Image = null; // Limpia la imagen del Pbx
             }
 
             Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
 
-            if (seleccionado.Imagenes != null && seleccionado.Imagenes.Count > 0)
+            if (seleccionado.Imagenes != null && seleccionado.Imagenes.Count > 0) 
             {
                 imagenesArticuloActual = seleccionado.Imagenes;
                 indiceImagenActual = 0;
