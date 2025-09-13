@@ -91,6 +91,22 @@ namespace CatalogoArticulos
                 dgvArticulos.DataSource = negocio.Listar();
                 dgvArticulos.Columns["ID"].Visible = false;
 
+                // si hay articulos queda selecciónado el primero. 
+                //porque sino, si elimino el primero, no queda seleccionado ninguno y no se ve la imagen
+                if (dgvArticulos.Rows.Count > 0)
+                {
+                    dgvArticulos.ClearSelection();
+                    dgvArticulos.Rows[0].Selected = true;
+                }
+                else
+                {
+                    //  Si no hay artículos, limpia imagen y label
+                    imagenesArticuloActual.Clear();
+                    pbxArticulo.Image = null;
+                    lblIndiceImagen.Text = "Sin imágenes";
+                    ActualizarEstadoBotones();
+                }
+
 
             }
             catch (Exception ex)
@@ -176,6 +192,10 @@ namespace CatalogoArticulos
             // Verifica que haya una fila seleccionada ANTES de hacer cualquier cosa.
             if (dgvArticulos.CurrentRow == null)
             {
+                //  si no o hay selección, limpiamos imagen y label
+                pbxArticulo.Image = null;
+                lblIndiceImagen.Text = "Sin imágenes";
+                ActualizarEstadoBotones();
                 return; 
             }
 
@@ -334,5 +354,7 @@ namespace CatalogoArticulos
             var negocio = new ArticuloNegocio();
             dgvArticulos.DataSource = negocio.Listar(orden);
         }
+
+        
     }
 }

@@ -41,8 +41,8 @@
             this.btnAgregar = new System.Windows.Forms.Button();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.gxbFiltrado = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.cboOrden = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.dgvArticulos = new System.Windows.Forms.DataGridView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.btnIzquierda = new System.Windows.Forms.Button();
@@ -173,7 +173,7 @@
             this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
             this.lblTitulo.Location = new System.Drawing.Point(276, 87);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(388, 45);
+            this.lblTitulo.Size = new System.Drawing.Size(374, 42);
             this.lblTitulo.TabIndex = 12;
             this.lblTitulo.Text = "CATALOGO PRODUCTOS";
             // 
@@ -196,16 +196,6 @@
             this.gxbFiltrado.TabStop = false;
             this.gxbFiltrado.Text = "FILTRADO";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(663, 20);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(132, 25);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Ordenar Precio";
-            // 
             // cboOrden
             // 
             this.cboOrden.FormattingEnabled = true;
@@ -214,6 +204,16 @@
             this.cboOrden.Size = new System.Drawing.Size(147, 21);
             this.cboOrden.TabIndex = 6;
             this.cboOrden.SelectedIndexChanged += new System.EventHandler(this.cboOrden_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
+            this.label2.Location = new System.Drawing.Point(663, 20);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(140, 25);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Ordenar Precio";
             // 
             // dgvArticulos
             // 
@@ -295,7 +295,7 @@
             this.lblIndiceImagen.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.lblIndiceImagen.Location = new System.Drawing.Point(730, 376);
             this.lblIndiceImagen.Name = "lblIndiceImagen";
-            this.lblIndiceImagen.Size = new System.Drawing.Size(86, 15);
+            this.lblIndiceImagen.Size = new System.Drawing.Size(95, 17);
             this.lblIndiceImagen.TabIndex = 19;
             this.lblIndiceImagen.Text = "Imagen 0 de 0";
             // 
