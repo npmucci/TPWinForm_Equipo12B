@@ -64,8 +64,11 @@
             // dgvMarca
             // 
             this.dgvMarca.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMarca.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvMarca.Location = new System.Drawing.Point(26, 91);
+            this.dgvMarca.MultiSelect = false;
             this.dgvMarca.Name = "dgvMarca";
+            this.dgvMarca.ReadOnly = true;
             this.dgvMarca.Size = new System.Drawing.Size(358, 168);
             this.dgvMarca.TabIndex = 26;
             // 
@@ -80,6 +83,7 @@
             // 
             // btnEliminarMarca
             // 
+            this.btnEliminarMarca.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnEliminarMarca.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminarMarca.Image = global::CatalogoArticulos.Properties.Resources.close;
             this.btnEliminarMarca.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -95,6 +99,7 @@
             // 
             // btnAgregarMarca
             // 
+            this.btnAgregarMarca.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnAgregarMarca.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregarMarca.Image = global::CatalogoArticulos.Properties.Resources.plus;
             this.btnAgregarMarca.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;

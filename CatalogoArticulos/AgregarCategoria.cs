@@ -30,7 +30,7 @@ namespace CatalogoArticulos
             {
                 negocio.AgregarCategoria(nuevaCat);
                 SeAgrego = true;
-                MessageBox.Show("Categoría agregada con éxito");
+                MessageBox.Show("Categoría agregada con éxito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
             catch (Exception ex)

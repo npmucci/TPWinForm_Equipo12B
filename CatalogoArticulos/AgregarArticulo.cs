@@ -97,12 +97,23 @@ namespace CatalogoArticulos
         {
             if (lbxListaImagenes.SelectedItem != null)
             {
-
                 Imagen imagenSeleccionada = (Imagen)lbxListaImagenes.SelectedItem;
-                imagenes.Remove(imagenSeleccionada);
-                lbxListaImagenes.Items.Remove(imagenSeleccionada);
+
+                DialogResult resultado = MessageBox.Show( $"¿Estas seguro de que queres eliminar la imagen?","Confirmar eliminación",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+
+                if (resultado == DialogResult.Yes)
+                {
+                    imagenes.Remove(imagenSeleccionada);
+                    lbxListaImagenes.Items.Remove(imagenSeleccionada);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Seleccione una imagen primero.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+        
+        
 
         private void lbxListaImagenes_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -134,32 +145,32 @@ namespace CatalogoArticulos
         {
             if (string.IsNullOrWhiteSpace(txbCodigo.Text) || !esCodigoValido(txbCodigo.Text))
             {
-                MessageBox.Show("El campo 'Código' debe ser un número válido.");
+                MessageBox.Show("El campo 'Código' debe ser un número válido.", "Código", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
             }
             else if (string.IsNullOrWhiteSpace(txbNombre.Text))
             {
-                MessageBox.Show("El campo 'Nombre' no puede estar vacío.");
+                MessageBox.Show("El campo 'Nombre' no puede estar vacío.", "Nombre", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
             }
             else if (string.IsNullOrWhiteSpace(txbDescrip.Text))
             {
-                MessageBox.Show("El campo 'Descripción' no puede estar vacío.");
+                MessageBox.Show("El campo 'Descripción' no puede estar vacío.", "Descripción", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
             }
             else if (string.IsNullOrWhiteSpace(txbPrecio.Text) || !SoloNumeros(txbPrecio.Text))
             {
-                MessageBox.Show("El campo 'Precio' debe ser un número válido.");
+                MessageBox.Show("El campo 'Precio' debe ser un número válido.", "Precio", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
             }
             else if (cbxMarca.SelectedItem == null)
             {
-                MessageBox.Show("Debe seleccionar una Marca.");
+                MessageBox.Show("Debe seleccionar una Marca.", "Marca", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
             }
             else if (cbxCategoria.SelectedItem == null)
             {
-                MessageBox.Show("Debe seleccionar una Categoría.");
+                MessageBox.Show("Debe seleccionar una Categoría.", "Categoria", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
             }
 
@@ -202,13 +213,13 @@ namespace CatalogoArticulos
                 {
                     negocio.Modificar(articulo);
                     imagenNegocio.ModificarImagenes(articulo.Imagenes, articulo.Id, imagenesOriginales);
-                    MessageBox.Show("Artículo modificado con éxito.");
+                    MessageBox.Show("Artículo modificado con éxito.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else // Alta de nuevo artículo
                 {
                     int idGenerado = negocio.AgregarArticulo(articulo);
                     imagenNegocio.AgregarImagenes(articulo.Imagenes, idGenerado);
-                    MessageBox.Show("Artículo agregado con éxito.");
+                    MessageBox.Show("Artículo agregado con éxito.","Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
                 ArticuloAgregado = true;

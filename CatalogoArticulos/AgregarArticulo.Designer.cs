@@ -220,6 +220,7 @@
             // 
             // btnAceptar
             // 
+            this.btnAceptar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnAceptar.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAceptar.Image = global::CatalogoArticulos.Properties.Resources.plus;
             this.btnAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -234,6 +235,7 @@
             // 
             // btnCancelar
             // 
+            this.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnCancelar.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.Image = global::CatalogoArticulos.Properties.Resources.close;
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;

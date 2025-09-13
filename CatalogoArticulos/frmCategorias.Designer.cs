@@ -64,8 +64,11 @@
             // dgvCategoria
             // 
             this.dgvCategoria.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCategoria.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvCategoria.Location = new System.Drawing.Point(12, 78);
+            this.dgvCategoria.MultiSelect = false;
             this.dgvCategoria.Name = "dgvCategoria";
+            this.dgvCategoria.ReadOnly = true;
             this.dgvCategoria.Size = new System.Drawing.Size(358, 168);
             this.dgvCategoria.TabIndex = 25;
             // 
@@ -80,6 +83,7 @@
             // 
             // btnEliminarCategoria
             // 
+            this.btnEliminarCategoria.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnEliminarCategoria.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminarCategoria.Image = global::CatalogoArticulos.Properties.Resources.close;
             this.btnEliminarCategoria.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -95,6 +99,7 @@
             // 
             // btnAgregarCategoria
             // 
+            this.btnAgregarCategoria.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnAgregarCategoria.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregarCategoria.Image = global::CatalogoArticulos.Properties.Resources.plus;
             this.btnAgregarCategoria.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;

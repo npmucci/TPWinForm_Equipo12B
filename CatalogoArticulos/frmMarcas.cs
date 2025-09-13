@@ -53,7 +53,7 @@ namespace CatalogoArticulos
                     try
                     {
                         marcaNegocio.EliminarMarca(seleccionado.Id);
-                        MessageBox.Show("Marca eliminada con éxito");
+                        MessageBox.Show("Marca eliminada con éxito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         dgvMarca.DataSource = marcaNegocio.Listar();
                     }
                     catch (Exception ex)
@@ -64,7 +64,7 @@ namespace CatalogoArticulos
             }
             else
             {
-                MessageBox.Show("Por favor, selecciona una marca para eliminar.");
+                MessageBox.Show("Por favor, selecciona una marca para eliminar.", "Marca", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

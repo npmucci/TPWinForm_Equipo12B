@@ -247,7 +247,8 @@ namespace CatalogoArticulos
             }
             else
             {
-                MessageBox.Show("Seleccione un artículo primero.");
+                MessageBox.Show("Seleccione un artículo primero.", "Atención",MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
             }
         }
 
@@ -289,7 +290,8 @@ namespace CatalogoArticulos
             }
             else
             {
-                MessageBox.Show("Seleccione un artículo primero.");
+                MessageBox.Show("Seleccione un artículo primero.", "Atención", MessageBoxButtons.OK,MessageBoxIcon.Warning);
+
 
             }
         }

@@ -53,7 +53,7 @@ namespace CatalogoArticulos
                     try
                     {
                         categoriaNegocio.EliminarCategoria(seleccionado.Id);
-                        MessageBox.Show("Categoría eliminada con éxito");
+                        MessageBox.Show("Categoría eliminada con éxito","Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         dgvCategoria.DataSource = categoriaNegocio.Listar();
                     }
                     catch (Exception ex)
@@ -62,6 +62,7 @@ namespace CatalogoArticulos
                     }
                 }
             }
+            MessageBox.Show("Por favor, selecciona una categoria para eliminar.", "Categoria", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

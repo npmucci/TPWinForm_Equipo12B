@@ -30,7 +30,7 @@ namespace CatalogoArticulos
             {
                 marcaNegocio.AgregarMarca(nuevaMarca);
                 SeAgrego = true;
-                MessageBox.Show("Marca agregada con éxito");
+                MessageBox.Show("Marca agregada con éxito","Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
             catch (Exception ex)
