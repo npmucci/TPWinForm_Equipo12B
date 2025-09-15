@@ -64,7 +64,7 @@
             this.lblFiltroNombre.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
             this.lblFiltroNombre.Location = new System.Drawing.Point(69, 20);
             this.lblFiltroNombre.Name = "lblFiltroNombre";
-            this.lblFiltroNombre.Size = new System.Drawing.Size(81, 25);
+            this.lblFiltroNombre.Size = new System.Drawing.Size(67, 20);
             this.lblFiltroNombre.TabIndex = 2;
             this.lblFiltroNombre.Text = "Nombre";
             // 
@@ -82,7 +82,7 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
             this.label1.Location = new System.Drawing.Point(272, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(94, 25);
+            this.label1.Size = new System.Drawing.Size(76, 20);
             this.label1.TabIndex = 4;
             this.label1.Text = "Categoria";
             // 
@@ -92,7 +92,7 @@
             this.lblFiltroMarca.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
             this.lblFiltroMarca.Location = new System.Drawing.Point(481, 20);
             this.lblFiltroMarca.Name = "lblFiltroMarca";
-            this.lblFiltroMarca.Size = new System.Drawing.Size(65, 25);
+            this.lblFiltroMarca.Size = new System.Drawing.Size(52, 20);
             this.lblFiltroMarca.TabIndex = 5;
             this.lblFiltroMarca.Text = "Marca";
             // 
@@ -173,7 +173,7 @@
             this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
             this.lblTitulo.Location = new System.Drawing.Point(276, 87);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(374, 42);
+            this.lblTitulo.Size = new System.Drawing.Size(325, 37);
             this.lblTitulo.TabIndex = 12;
             this.lblTitulo.Text = "CATALOGO PRODUCTOS";
             // 
@@ -211,7 +211,7 @@
             this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
             this.label2.Location = new System.Drawing.Point(663, 20);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(140, 25);
+            this.label2.Size = new System.Drawing.Size(113, 20);
             this.label2.TabIndex = 5;
             this.label2.Text = "Ordenar Precio";
             // 
@@ -295,7 +295,7 @@
             this.lblIndiceImagen.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.lblIndiceImagen.Location = new System.Drawing.Point(730, 376);
             this.lblIndiceImagen.Name = "lblIndiceImagen";
-            this.lblIndiceImagen.Size = new System.Drawing.Size(95, 17);
+            this.lblIndiceImagen.Size = new System.Drawing.Size(80, 13);
             this.lblIndiceImagen.TabIndex = 19;
             this.lblIndiceImagen.Text = "Imagen 0 de 0";
             // 

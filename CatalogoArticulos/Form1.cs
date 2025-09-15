@@ -168,7 +168,10 @@ namespace CatalogoArticulos
             if (agregarArticulo.ArticuloAgregado)
             {
                 cargarDatos();
+               
             }
+            cargarCategorias();// recargo las categorias y marcas por si se agrego alguna nueva
+            cargarMarcas();
         }
 
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
@@ -290,6 +293,8 @@ namespace CatalogoArticulos
                     else if (dgvArticulos.Rows.Count > 0)
                         dgvArticulos.CurrentCell = dgvArticulos.Rows[dgvArticulos.Rows.Count - 1].Cells[1];
                 }
+                cargarCategorias();// recargo las categorias y marcas por si se agrego alguna nueva
+                cargarMarcas();
             }
             else
             {
@@ -297,6 +302,7 @@ namespace CatalogoArticulos
 
 
             }
+
         }
 
         private void ActualizarEstadoBotones()
