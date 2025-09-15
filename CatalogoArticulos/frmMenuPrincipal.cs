@@ -34,5 +34,11 @@ namespace CatalogoArticulos
             frmCategorias categorias = new frmCategorias();
             categorias.ShowDialog();
         }
+
+        private void btnTecnico_Click(object sender, EventArgs e)
+        {
+            frmSoporteTecnico soporte = new frmSoporteTecnico();
+            soporte.ShowDialog();
+        }
     }
 }

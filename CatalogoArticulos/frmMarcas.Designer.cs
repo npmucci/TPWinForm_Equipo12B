@@ -76,7 +76,7 @@
             // 
             this.pnlBotonesMarca.Controls.Add(this.btnEliminarMarca);
             this.pnlBotonesMarca.Controls.Add(this.btnAgregarMarca);
-            this.pnlBotonesMarca.Location = new System.Drawing.Point(26, 290);
+            this.pnlBotonesMarca.Location = new System.Drawing.Point(52, 290);
             this.pnlBotonesMarca.Name = "pnlBotonesMarca";
             this.pnlBotonesMarca.Size = new System.Drawing.Size(318, 49);
             this.pnlBotonesMarca.TabIndex = 27;

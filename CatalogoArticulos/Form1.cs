@@ -91,22 +91,6 @@ namespace CatalogoArticulos
                 dgvArticulos.DataSource = negocio.Listar();
                 dgvArticulos.Columns["ID"].Visible = false;
 
-                // si hay articulos queda selecciónado el primero. 
-                //porque sino, si elimino el primero, no queda seleccionado ninguno y no se ve la imagen
-                if (dgvArticulos.Rows.Count > 0)
-                {
-                    dgvArticulos.ClearSelection();
-                    dgvArticulos.Rows[0].Selected = true;
-                }
-                else
-                {
-                    //  Si no hay artículos, limpia imagen y label
-                    imagenesArticuloActual.Clear();
-                    pbxArticulo.Image = null;
-                    lblIndiceImagen.Text = "Sin imágenes";
-                    ActualizarEstadoBotones();
-                }
-
 
             }
             catch (Exception ex)
@@ -216,9 +200,15 @@ namespace CatalogoArticulos
             }
             else
             {
-                
+                indiceImagenActual = 0;
                 cargarImagen("https://efectocolibri.com/wp-content/uploads/2021/01/placeholder.png");
             }
+            // Actualiza label siempre
+            if (imagenesArticuloActual.Count > 0)
+                lblIndiceImagen.Text = $"Imagen {indiceImagenActual + 1} de {imagenesArticuloActual.Count}";
+            else
+                lblIndiceImagen.Text = "Sin imágenes";
+            
             //  Actualiza estado de botones
             ActualizarEstadoBotones();
         }
@@ -243,6 +233,12 @@ namespace CatalogoArticulos
 
                     // Refrescar grilla
                     cargarDatos();
+
+                    // Selecciona la primera fila si existe
+                    if (dgvArticulos.Rows.Count > 0)
+                        dgvArticulos.CurrentCell = dgvArticulos.Rows[0].Cells[1];
+                    else
+                        lblIndiceImagen.Text = "Sin imágenes";
                 }
             }
             else
@@ -281,11 +277,18 @@ namespace CatalogoArticulos
             if (dgvArticulos.CurrentRow != null)
             {
                 Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                int filaActual = dgvArticulos.CurrentRow.Index; // para saber que fila se esta modificando
                 frmAgregarArticulo modificarArticulo = new frmAgregarArticulo(seleccionado);
                 modificarArticulo.ShowDialog();
                 if (modificarArticulo.ArticuloAgregado)
                 {
                     cargarDatos();
+
+                    // Volver a seleccionar la misma fila si sigue existiendo
+                    if (dgvArticulos.Rows.Count > filaActual)
+                        dgvArticulos.CurrentCell = dgvArticulos.Rows[filaActual].Cells[1];
+                    else if (dgvArticulos.Rows.Count > 0)
+                        dgvArticulos.CurrentCell = dgvArticulos.Rows[dgvArticulos.Rows.Count - 1].Cells[1];
                 }
             }
             else
